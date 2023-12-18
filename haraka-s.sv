@@ -18,7 +18,7 @@ module Mux512 (a, b, sel, out);
 	input sel;
 	output logic [511:0] out;
 
-always_comb begin
+	always_comb begin
 		out = sel ? b : a;
 	end
 endmodule
@@ -53,29 +53,38 @@ module Aes (in, clk, out);
 endmodule
 
 
-module QuadAesAlt (in, clk, out);
-	input [511:0] in;
-	input clk;
-	output [511:0] out;
-
-	Aes Aes1 (.in(in [511:384]), .clk(clk), .out(out [511:384]));
-	Aes Aes2 (.in(in [383:256]), .clk(clk), .out(out [383:256]));
-	Aes Aes3 (.in(in [255:128]), .clk(clk), .out(out [255:128]));
-	Aes Aes4 (.in(in [127:0]), .clk(clk), .out(out [127:0]));
-
-endmodule
-
-
 module Mix512 (in, out);
 	input [511:0] in;
 	output logic [511:0] out;
 
-	wire [15:0] [31:0] bytes_in;
+	parameter NUM_CHUNKS = 16;
 
-	// {bytes_in [0], bytes_in [1], bytes_in [2], bytes_in [3],
-	//  bytes_in [4], bytes_in [5], bytes_in [6], bytes_in [7],
-	//  bytes_in [0], bytes_in [1], bytes_in [2], bytes_in [3],
-    //  bytes_in [4], bytes_in [5], bytes_in [6], bytes_in [7]} = in;
+	genvar i;
+	generate
+		for (i = 0; i < NUM_CHUNKS; i++) begin : chunks_gen
+			wire [31:0] chunk_in = in [(32 * (i + 1)) - 1 : 32 * i];
+		end
+	endgenerate
+
+	always_comb begin
+		out = {chunks_gen[14].chunk_in,
+			   chunks_gen[6].chunk_in,
+			   chunks_gen[10].chunk_in,
+			   chunks_gen[2].chunk_in,
+			   chunks_gen[5].chunk_in,
+			   chunks_gen[13].chunk_in,
+			   chunks_gen[1].chunk_in,
+			   chunks_gen[9].chunk_in,
+			   chunks_gen[4].chunk_in,
+			   chunks_gen[12].chunk_in,
+			   chunks_gen[0].chunk_in,
+			   chunks_gen[8].chunk_in,
+			   chunks_gen[15].chunk_in,
+			   chunks_gen[7].chunk_in,
+			   chunks_gen[11].chunk_in,
+			   chunks_gen[3].chunk_in};
+	end
+
 endmodule
 
 
@@ -84,10 +93,7 @@ module Demux512 (in, sel, a, b);
 	input sel;
 	output logic [511:0] a, b;
 
-	wire [127:0] [10:0] round_keys;
-	wire [127:0] [10:0] state;
-
-always_comb begin
+	always_comb begin
 		a = sel ? 0 : in;
 		b = sel ? in : 0;
 	end
