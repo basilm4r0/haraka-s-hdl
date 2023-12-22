@@ -34,8 +34,8 @@ module QuadAes (in, clk,out);
 	generate
 		for (i = 0; i < NUM_AES; i++) begin : aes_gen
 			Aes Aes (.in(in [511 - i * 128 : 384 - i * 128]),
-				     .clk(clk),
-					 .out(out [511 - i * 128 : 384 - i * 128]));
+			         .clk(clk),
+			         .out(out [511 - i * 128 : 384 - i * 128]));
 		end
 	endgenerate
 
@@ -68,21 +68,21 @@ module Mix512 (in, out);
 
 	always_comb begin
 		out = {chunks_gen[14].chunk_in,
-			   chunks_gen[6].chunk_in,
-			   chunks_gen[10].chunk_in,
-			   chunks_gen[2].chunk_in,
-			   chunks_gen[5].chunk_in,
-			   chunks_gen[13].chunk_in,
-			   chunks_gen[1].chunk_in,
-			   chunks_gen[9].chunk_in,
-			   chunks_gen[4].chunk_in,
-			   chunks_gen[12].chunk_in,
-			   chunks_gen[0].chunk_in,
-			   chunks_gen[8].chunk_in,
-			   chunks_gen[15].chunk_in,
-			   chunks_gen[7].chunk_in,
-			   chunks_gen[11].chunk_in,
-			   chunks_gen[3].chunk_in};
+		       chunks_gen[6].chunk_in,
+		       chunks_gen[10].chunk_in,
+		       chunks_gen[2].chunk_in,
+		       chunks_gen[5].chunk_in,
+		       chunks_gen[13].chunk_in,
+		       chunks_gen[1].chunk_in,
+		       chunks_gen[9].chunk_in,
+		       chunks_gen[4].chunk_in,
+		       chunks_gen[12].chunk_in,
+		       chunks_gen[0].chunk_in,
+		       chunks_gen[8].chunk_in,
+		       chunks_gen[15].chunk_in,
+		       chunks_gen[7].chunk_in,
+		       chunks_gen[11].chunk_in,
+		       chunks_gen[3].chunk_in};
 	end
 
 endmodule
