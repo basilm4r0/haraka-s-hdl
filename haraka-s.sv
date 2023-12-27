@@ -1,4 +1,4 @@
-module Haraka_S_Core (in, sel, clk, out);
+module Haraka_S (in, sel, clk, out);
 	input [511:0] in;
 	input sel, clk;
 	output logic [511:0] out;
@@ -38,17 +38,6 @@ module QuadAes (in, clk,out);
 			         .out(out [511 - i * 128 : 384 - i * 128]));
 		end
 	endgenerate
-
-endmodule
-
-
-module Aes (in, clk, out);
-	input [127:0] in;
-	input clk;
-	output logic [127:0] out;
-
-	wire [127:0] [10:0] round_keys;
-	wire [127:0] [10:0] state;
 
 endmodule
 
