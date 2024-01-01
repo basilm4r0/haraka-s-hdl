@@ -2,7 +2,7 @@ module Mix512 (in, out);
 	input [511:0] in;
 	output logic [511:0] out;
 
-	parameter NUM_CHUNKS = 16;
+	parameter NUM_CHUNKS = 512 / 32;
 
 	genvar i;
 	generate

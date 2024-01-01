@@ -1,5 +1,5 @@
 module QuadAes (in, clk, encrypt, round_constant, out);
-	input [511:0] in;
+	input [511:0] in, round_constant;
 	input clk, encrypt;
 	output [511:0] out;
 
@@ -9,7 +9,7 @@ module QuadAes (in, clk, encrypt, round_constant, out);
 			Aes Aes (.in(in [i -: 128]),
 			         .clk(clk),
 					 .encrypt(encrypt),
-					 .round_constant(round_constant),
+					 .round_constant(round_constant [i -: 128]),
 			         .out(out [i -: 128]));
 		end
 	endgenerate

@@ -1,6 +1,6 @@
 module Aes (in, clk, encrypt, round_constant, out);
 	input [127:0] in;
-	input [7:0] round_constant;
+	input [127:0] round_constant;
 	input clk, encrypt;
 	output logic [127:0] out;
 
@@ -10,6 +10,6 @@ module Aes (in, clk, encrypt, round_constant, out);
 	Register Register (.in(w1), .clk(clk), .out(w2));
 	ShiftRows ShiftRows (.in(w2), .out(w3));
 	MixColumns MixColumns (.in_data(w3), .out_data(w4));
-	Xor128 Xor128 (.a(w4), .b(round_constant), .out(out));
+	AddRC AddRC (.data(w4), .round_constant(round_constant), .out(out));
 
 endmodule
