@@ -1,44 +1,22 @@
-module Haraka_S (in, d, enable, encrypt, bclk, clk, reset, out);
-	input [64-1:0] in;
-	input [64-1:0] d;
-	input enable;
-	input encrypt;
-	input bclk;
-	input clk;
-	input reset;
-	output logic [64-1:0] out;
-
-	logic [256-1:0] padded;
-	logic [256-1:0] r = 0;
-	logic [256-1:0] c = 0;
-	logic [512-1:0] haraka_out;
-	logic [3:0] round;
+`timescale 1s / 1ps
+module test ();
+	logic [2:0] round = 0;
+	logic clk = 0;
 	logic [127:0] rc [7:0];
-	logic [255:0] serializer_input;
-	logic [63:0] counter;
-	deserializer deserializer (.sEEG(in), .enable(enable), .bclk(bclk), .clk(clk), .eegOut(padded));
 
-	always @(posedge clk, posedge reset) begin
-		if (reset) begin
-			r <= 0;
-			c <= 0;
-			round <= 0;
+	parameter CLK_PERIOD = 10;
+	always #(CLK_PERIOD/2) clk<=~clk;
+	always @(posedge clk) begin
+		$display("round = %d\n", round);
+		for (int i = 0; i < 8; i++) begin
+			$display("rc[%d] = %h", i, rc[i]);
 		end
-		else begin
-			r <= haraka_out[511:256] ^ padded;
-			c <= haraka_out[255:0];
-		if (round < 4)
-				round <= round + 1;
-			else if (round >= 4)
-				round <= 0;
-		end
-		if (padded == 0) begin
-			counter <= counter + 1;
-			if (counter < d)
-				serializer_input <= r;
-			else
-				serializer_input <= 0;
-		end
+		// if (round < 4)
+			round <= round + 1;
+		// else if (round >= 4) begin
+		// 	round <= 0;
+		// 	$stop;
+		// end
 	end
 
 	always_comb begin
@@ -93,9 +71,4 @@ module Haraka_S (in, d, enable, encrypt, bclk, clk, reset, out);
 	assign round_constants[37] = 128'hae51a51a1bdff7be40c06e2822901235;
 	assign round_constants[38] = 128'ha0c1613cba7ed22bc173bc0f48a659cf;
 	assign round_constants[39] = 128'h756acc03022882884ad6bdfde9c59da1;
-
-
-	Haraka Haraka (.in({r,c}), .rc(rc), .sel(0), .encrypt(encrypt), .clk(clk), .out(haraka_out));
-	serializer serializer (.sEEG(serializer_input), .bclk(bclk), .clk(clk), .eegOut(out));
-
 endmodule
