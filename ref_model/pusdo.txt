@@ -1,0 +1,31 @@
+we have 4 for loops in HarakaS: 
+1st loop: loop 5 time cause haraka spec says that
+2nd loop: loop n times, since n = len(P) /r,  r = 256 ( the rate), P: is the padded message
+         for example if the length of my message is 300, then i should absorbe the message into the padding function to obtain a string
+         a positive multiple of r. here in this example to 512 bit
+         Hence: len(p) = 512 --> n = 512 /256 =2 -> n = 2 
+3ed loop: loop for 2 times cause Haraka has 2 ASE rounds
+4th loop: loop for 4 times since 4 AES round functions are required simultaneously to process a 512-bit state in parallel
+
+P  = n || padd (r, len(n))  #  || : denotes concatenation
+n = len(P) / r 
+P = p1 || p2 ..... || pn-1
+set s = 0
+for y = 0 to 5-1 do
+    for i=0 to n-1 do
+        s = s xor (pi || 0^c)  # c(capacity) = 256 
+        for  j=0 to 2 do
+            for x=0 to 4 do
+                x = ase(s[x])
+            end for
+        s = mix512(s)
+        end for
+    end for
+end for
+Set Z = 0
+if d>len(Z) then
+    Z = Z ∥ Truncr(S)
+    end if
+M = Truncd(Z)
+
+            
