@@ -1,5 +1,8 @@
 # HarakaS in SystemVerilog
 
+![SystemVerilog](https://img.shields.io/badge/SystemVerilog-ED1C24?style=for-the-badge&logo=verilog&logoColor=white)  
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
 ## About This Repository
 
 This repository houses an **implementation of the HarakaS hash function** in **SystemVerilog**. The HarakaS hash function is Haraka v2 hash function with a sponge-based construction to support the arbitrary length of input strings.
