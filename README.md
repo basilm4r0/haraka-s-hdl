@@ -2,13 +2,13 @@
 
 ## About This Repository
 
-This repository houses an **implementation of the HarakaS hash function** in **SystemVerilog**. The HarakaS hasg function is Haraka v2 hash function with a sponge-based construction to support the arbitrary length of input strings.
+This repository houses an **implementation of the HarakaS hash function** in **SystemVerilog**. The HarakaS hash function is Haraka v2 hash function with a sponge-based construction to support the arbitrary length of input strings.
 
 ### Features
 
 - **SystemVerilog Implementation**: The core HarakaS function is implemented in SystemVerilog, ensuring compatibility with hardware designs.
 
-- **UVM Environment**:
+- **UVM Environment**: [TODO: In progress ]
 
 - **Resource Links**: This repository includes links to the relevant research paper and the official Haraka code.
 
@@ -19,7 +19,11 @@ This repository houses an **implementation of the HarakaS hash function** in **S
 
 ## Getting Started
 
+[TODO: In progress ]
+
 ## Contributions
+
+[TODO: In progress ]
 
 ## License
 
