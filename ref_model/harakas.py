@@ -172,7 +172,7 @@ def haraka512256(msg):
 	return s[0][8:] + s[1][8:] + s[2][0:8] + s[3][0:8]
 
 """
-this padding function to obtain a string whose length is the positive multiple of r.
+	This padding function to obtain a string whose length is the positive multiple of r.
 """
 def pad_message(message, r):
     padded_length = ((len(message) + r - 1) // r) * r
@@ -180,7 +180,7 @@ def pad_message(message, r):
 
 """
 	! this function is an implementation for the psudo code. 
-	! it violate what the Chinese's algorithm steps 
+	! it violates Chinese's algorithm steps 
 """
 def pusdo_implementation(M,d):
     #! TODO [0]: write down the padding algorithm -> ("multi-rate padding" or "10*1 padding")
@@ -203,7 +203,7 @@ def pusdo_implementation(M,d):
             print ("** chucnk %d **"%(j))
             print ("= round %d : after aes layer ="%(t))
             printstate(s)
-
+    
 	#! TODO [3]: add the squeezing part 
     # Extract output
     Z = []
@@ -212,11 +212,12 @@ def pusdo_implementation(M,d):
     return Z[:d]  # Truncate final output to required length
 
 """
-* This function is most correct one for HarakaS
-  - allow for arbitrary length message as an input
-  - return only 256 bit ( 32 byte)
+	* This function is the correct one for HarakaS (till now XD)
+	- allows for arbitrary length message as an input
+	- returns only 256 bit (32 byte)
 """ 
 def haraka_s(M):
+    
     # write down the padding algorithm -> ("multi-rate padding" or "10*1 padding")
     padded_message = pad_message(M, RATE ) # message afrer padding 
     n = len(padded_message) // (RATE )
@@ -246,12 +247,12 @@ def haraka_s(M):
     return s[0][8:] + s[1][8:] + s[2][0:8] + s[3][0:8]
 
 """
-haraka_512_s: call haraka512256 function with the sponge construction. 
-! This function has two problems: 
-	! problem #1:  haraka512256 intialize the state s to mgs not to zero 
-			that means for each chucnk s will initially have the current block value not the previous calculations. 
-			** (violate the meaning of absorbing) ** 
-	! problem #2: haraka512256 has a feedback implementation, i don't know what this is about 
+	haraka_512_s: call haraka512256 function with the sponge construction. 
+	! This function has two problems: 
+		! problem #1:  haraka512256 intializes the state (s) to mgs not to zeros
+				that means for each chucnk (s) will initially have the current block value not the previous calculations. 
+				** (violates the meaning of absorbing) ** 
+		! problem #2: haraka512256 has a feedback implementation, i don't know what this is about :P 
 """
 def haraka_512_s(M,d):
     padded_message = pad_message(M, RATE ) # message afrer padding 
@@ -271,9 +272,10 @@ def haraka_512_s(M,d):
         Z.extend(s[:RATE])  # Truncate to RATE if necessary
     return Z[:length]  # Truncate final output to required length
 
-#################################################################################################################################
-												# main function  # 
-#################################################################################################################################    
+
+######################################################################################################################################################################################################
+									# main function  # 
+####################################################################################################################################################################################################    
 
 # try random value with different lengths 
 # m = [random.randint(0, 255) for _ in range(300)]
