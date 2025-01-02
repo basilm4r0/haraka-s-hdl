@@ -676,6 +676,44 @@ static inline void mix_columns(uint64_t *q)
     q[7] = q6 ^ r6 ^ r7 ^ rotr32(q7 ^ r7);
 }
 
+static void interleave_constant(uint64_t *out, const unsigned char *in)
+{
+    uint32_t tmp_32_constant[16];
+    int i;
+
+    br_range_dec32le(tmp_32_constant, 16, in);
+    for (i = 0; i < 4; i++) {
+        br_aes_ct64_interleave_in(&out[i], &out[i + 4], tmp_32_constant + (i << 2));
+    }
+    br_aes_ct64_ortho(out);
+}
+
+static void interleave_constant32(uint32_t *out, const unsigned char *in)
+{
+    int i;
+    for (i = 0; i < 4; i++) {
+        out[2*i] = br_dec32le(in + 4*i);
+        out[2*i + 1] = br_dec32le(in + 4*i + 16);
+    }
+    br_aes_ct_ortho(out);
+}
+
+void tweak_constants(spx_ctx *ctx)
+{
+    unsigned char buf[40*16];
+    int i;
+
+    /* Use the standard constants to generate tweaked ones. */
+    memcpy((uint8_t *)ctx->tweaked512_rc64, (uint8_t *)haraka512_rc64, 40*16);
+
+    /* Constants for pk.seed */
+    haraka_S(buf, 40*16, ctx->pub_seed, SPX_N, ctx);
+    for (i = 0; i < 10; i++) {
+        interleave_constant32(ctx->tweaked256_rc32[i], buf + 32*i);
+        interleave_constant(ctx->tweaked512_rc64[i], buf + 64*i);
+    }
+}
+
 static void haraka_S_absorb(unsigned char *s, unsigned int r,
                             const unsigned char *m, unsigned long long mlen,
                             unsigned char p, const spx_ctx *ctx)
