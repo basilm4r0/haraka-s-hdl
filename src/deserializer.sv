@@ -1,47 +1,49 @@
 module deserializer
-# (parameter INWIDTH = 64, parameter OUTWIDTH = 256)
-(sEEG, enable, bclk, clk, eegOut);
-    input [INWIDTH-1:0] sEEG;
-    input bclk,clk;
+# (parameter INWIDTH = 1, parameter OUTWIDTH = 256)
+(serial_in, enable, clear, clk, outclk, out, start_squeeze);
+    input [INWIDTH-1:0] serial_in;
+    input clk;
+    output logic outclk;
     input enable;
-    reg [OUTWIDTH-1:0] temp;
-    reg [OUTWIDTH-1:0] temp_reg; //..synchronizer
+    input clear;
+    logic [OUTWIDTH-1:0] temp;
     logic [$clog2(OUTWIDTH/INWIDTH)-1:0] counter;
-    output reg [OUTWIDTH-1:0] eegOut;
-    logic [OUTWIDTH-1:0] pad = 0;
+    logic [1:0] pad_counter;
+    output logic [OUTWIDTH-1:0] out;
+    output wire start_squeeze = pad_counter[1];
 
-    always @(negedge bclk) begin
+    always @(posedge clk, posedge clear) begin
+        if (clear) begin
+            temp <= 0;
+            counter <= 0;
+            pad_counter <= 0;
+        end
         temp[OUTWIDTH-1-INWIDTH:0] <= temp[OUTWIDTH-1:INWIDTH];
         if (enable) begin
-            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH]   <= sEEG;
-            counter <= counter + 1;
+            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH]   <= serial_in;
         end
-        else
-            case (counter)
+        else    // source of pad10*1 padding algorithm: FIPS PUB 202
+            case (pad_counter)
                 0: begin
-                    pad[255] <= 1;
-                    pad[0] <= 1;
+                    temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 1;
+                    pad_counter <= 1;
                 end
                 1: begin
-                    pad[191] <= 1;
-                    pad[0] <= 1;
-                end
-                2: begin
-                    pad[127] <= 1;
-                    pad[0] <= 1;
-                end
-                3: begin
-                    pad[63] <= 1;
-                    pad[0] <= 1;
+                    case (counter)
+                        default: begin
+                            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 0;
+                        end
+                        8'(OUTWIDTH - 1): begin
+                            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 1;
+                            pad_counter <= 2;
+                        end
+                    endcase
                 end
             endcase
-        pad[OUTWIDTH-1-INWIDTH:0] <= pad[OUTWIDTH-1:INWIDTH];
-        temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= pad[INWIDTH-1:0];
-
-    end
-
-    always@(posedge clk) begin
-        temp_reg <= temp;
-        eegOut   <= temp_reg;
+        counter <= counter + 1;
+        if (counter == $clog2(OUTWIDTH/INWIDTH)'(OUTWIDTH - 1)) begin
+            outclk <= 1;
+            out   <= temp;
+        end
     end
 endmodule

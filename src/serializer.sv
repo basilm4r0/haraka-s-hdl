@@ -1,19 +1,28 @@
 module serializer
-# (parameter INWIDTH = 256, parameter OUTWIDTH = 64)
-(sEEG, bclk, clk, eegOut);
-    input [INWIDTH-1:0] sEEG;
+# (parameter INWIDTH = 256, parameter OUTWIDTH = 1)
+(in, bclk, clk, serial_out, reset);
+    input [INWIDTH-1:0] in;
     input bclk,clk;
-    reg [INWIDTH-1:0] temp;
-    reg [INWIDTH-1:0] temp_reg; //..synchronizer
-    output reg [OUTWIDTH-1:0] eegOut;
+    input reset;
+    logic [INWIDTH-1:0] shift_reg;
+    logic input_captured;
+    output reg [OUTWIDTH-1:0] serial_out;
 
-    always@(posedge clk) begin
-        temp <= sEEG;
-    end
+    always_ff @(posedge bclk, posedge reset) begin
+        if (reset) begin
+            shift_reg <= 0;
+            input_captured <= 0;
+        end
 
-    always @(negedge bclk) begin
-        temp_reg <= temp;
-        temp_reg[INWIDTH-1-OUTWIDTH:0] <= temp_reg[INWIDTH-1:OUTWIDTH];
-        eegOut <= temp_reg[OUTWIDTH-1:0];
+        if (clk && !input_captured) begin
+            shift_reg <= in;
+            input_captured <= 1;
+        end
+
+        if (!clk)
+            input_captured <= 0;
+
+        serial_out <= shift_reg[OUTWIDTH-1:0];
+        shift_reg <= {OUTWIDTH'(0), shift_reg[INWIDTH-1:OUTWIDTH]};
     end
 endmodule

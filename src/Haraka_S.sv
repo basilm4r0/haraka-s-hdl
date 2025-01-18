@@ -1,45 +1,48 @@
-module Haraka_S (in, d, enable, encrypt, bclk, clk, reset, out);
-	input [64-1:0] in;
-	input [64-1:0] d;
+module Haraka_S (serial_in, digest_length, enable, clk, reset, out);
+	input serial_in;
+	input [64-1:0] digest_length;
 	input enable;
-	input encrypt;
-	input bclk;
 	input clk;
 	input reset;
-	output logic [64-1:0] out;
+	output logic out;
 
+	wire internal_clk;
 	logic [256-1:0] padded;
-	logic [256-1:0] r = 0;
-	logic [256-1:0] c = 0;
+	logic [256-1:0] rate;
+	logic [256-1:0] capacity;
 	logic [512-1:0] haraka_out;
+	logic [512-1:0] haraka_in;
 	logic [3:0] round;
 	logic [127:0] rc [7:0];
 	logic [255:0] serializer_input;
 	logic [63:0] counter;
-	deserializer deserializer (.sEEG(in), .enable(enable), .bclk(bclk), .clk(clk), .eegOut(padded));
+	wire output_ready;
+	wire start_squeeze;
 
-	always @(posedge clk, posedge reset) begin
+	deserializer deserializer (.serial_in(serial_in), .enable(enable), .clk(clk), .out(padded), .outclk(internal_clk), .clear(reset), .start_squeeze(start_squeeze));
+	Haraka Haraka (.in(haraka_in), .rc(rc), .clk(clk), .out(haraka_out), .reset(reset), .output_ready(output_ready));
+	serializer serializer (.in(serializer_input), .bclk(clk), .clk(internal_clk), .reset(reset), .serial_out(out));
+	
+	always_ff @(posedge internal_clk, posedge reset) begin
 		if (reset) begin
-			r <= 0;
-			c <= 0;
+			rate <= 0;
+			capacity <= 0;
 			round <= 0;
 		end
-		else begin
-			r <= haraka_out[511:256] ^ padded;
-			c <= haraka_out[255:0];
-		if (round < 4)
-				round <= round + 1;
-			else if (round >= 4)
-				round <= 0;
+		else if(output_ready) begin
+			rate <= haraka_out[511:256];
+			capacity <= haraka_out[255:0];
 		end
-		if (padded == 0) begin
+		if (start_squeeze) begin
 			counter <= counter + 1;
-			if (counter < d)
-				serializer_input <= r;
+			if (counter < digest_length>>5 + digest_length[4:0] != 0)
+				serializer_input <= rate;
 			else
 				serializer_input <= 0;
 		end
 	end
+
+	assign haraka_in = {rate^padded, capacity};
 
 	always_comb begin
 			rc = {round_constants[round*8+7],
@@ -93,9 +96,5 @@ module Haraka_S (in, d, enable, encrypt, bclk, clk, reset, out);
 	assign round_constants[37] = 128'hae51a51a1bdff7be40c06e2822901235;
 	assign round_constants[38] = 128'ha0c1613cba7ed22bc173bc0f48a659cf;
 	assign round_constants[39] = 128'h756acc03022882884ad6bdfde9c59da1;
-
-
-	Haraka Haraka (.in({r,c}), .rc(rc), .sel(0), .encrypt(encrypt), .clk(clk), .out(haraka_out));
-	serializer serializer (.sEEG(serializer_input), .bclk(bclk), .clk(clk), .eegOut(out));
 
 endmodule
