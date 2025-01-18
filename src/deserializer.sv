@@ -1,5 +1,5 @@
 module deserializer
-# (parameter INWIDTH = 1, parameter OUTWIDTH = 256)
+# (parameter INWIDTH = 8, parameter OUTWIDTH = 256)
 (serial_in, enable, clear, clk, outclk, out, start_squeeze);
     input [INWIDTH-1:0] serial_in;
     input clk;
@@ -33,7 +33,7 @@ module deserializer
                         default: begin
                             temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 0;
                         end
-                        8'(OUTWIDTH - 1): begin
+                        $clog2(OUTWIDTH/INWIDTH)'(OUTWIDTH/INWIDTH): begin
                             temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 1;
                             pad_counter <= 2;
                         end
