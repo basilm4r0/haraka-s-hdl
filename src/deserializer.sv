@@ -1,6 +1,11 @@
 module deserializer
-# (parameter INWIDTH = 8, parameter OUTWIDTH = 256)
 (serial_in, enable, clear, clk, outclk, out, start_squeeze);
+
+    parameter INWIDTH = 8,
+              OUTWIDTH = 256,
+              FIRSTPAD = 'h1f,
+              LASTPAD = 'h80;
+
     input [INWIDTH-1:0] serial_in;
     input clk;
     output logic outclk;
@@ -20,12 +25,12 @@ module deserializer
         end
         temp[OUTWIDTH-1-INWIDTH:0] <= temp[OUTWIDTH-1:INWIDTH];
         if (enable) begin
-            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH]   <= serial_in;
+            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= serial_in;
         end
-        else    // source of pad10*1 padding algorithm: FIPS PUB 202
+        else    // padding scheme specified in FIPS PUB 202 for SHAKE256
             case (pad_counter)
                 0: begin
-                    temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 1;
+                    temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= FIRSTPAD;
                     pad_counter <= 1;
                 end
                 1: begin
@@ -33,8 +38,8 @@ module deserializer
                         default: begin
                             temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 0;
                         end
-                        $clog2(OUTWIDTH/INWIDTH)'(OUTWIDTH/INWIDTH): begin
-                            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 1;
+                        $clog2(OUTWIDTH/INWIDTH)'(OUTWIDTH/INWIDTH): begin // reached end of shift register
+                            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= LASTPAD;
                             pad_counter <= 2;
                         end
                     endcase
