@@ -1,20 +1,22 @@
 module deserializer
 (serial_in, enable, clear, clk, outclk, out, start_squeeze);
 
-    parameter INWIDTH = 8,
-              OUTWIDTH = 256,
-              FIRSTPAD = 'h1f,
-              LASTPAD = 'h80;
+    parameter IN_WIDTH = 8,
+              OUT_WIDTH = 256,
+              PACKETS_IN_OUTPUT = OUT_WIDTH / IN_WIDTH,
+              PACKET_COUNTER_WIDTH = $clog2(PACKETS_IN_OUTPUT),
+              PAD_BEGINNING = 'h1f,
+              PAD_ENDING = 'h80;
 
-    input [INWIDTH-1:0] serial_in;
+    input [IN_WIDTH-1:0] serial_in;
     input clk;
     output logic outclk;
     input enable;
     input clear;
-    logic [OUTWIDTH-1:0] temp;
-    logic [$clog2(OUTWIDTH/INWIDTH)-1:0] counter;
+    logic [OUT_WIDTH-1:0] temp;
+    logic [PACKET_COUNTER_WIDTH-1:0] counter;
     logic [1:0] pad_counter;
-    output logic [OUTWIDTH-1:0] out;
+    output logic [OUT_WIDTH-1:0] out;
     output wire start_squeeze = pad_counter[1];
 
     always @(posedge clk, posedge clear) begin
@@ -23,32 +25,35 @@ module deserializer
             counter <= 0;
             pad_counter <= 0;
         end
-        temp[OUTWIDTH-1-INWIDTH:0] <= temp[OUTWIDTH-1:INWIDTH];
+        temp[OUT_WIDTH-1-IN_WIDTH:0] <= temp[OUT_WIDTH-1:IN_WIDTH];
         if (enable) begin
-            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= serial_in;
+            temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= serial_in;
         end
         else    // padding scheme specified in FIPS PUB 202 for SHAKE256
             case (pad_counter)
                 0: begin
-                    temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= FIRSTPAD;
+                    temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= PAD_BEGINNING;
                     pad_counter <= 1;
                 end
                 1: begin
                     case (counter)
                         default: begin
-                            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= 0;
+                            temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= 0;
                         end
-                        $clog2(OUTWIDTH/INWIDTH)'(OUTWIDTH/INWIDTH): begin // reached end of shift register
-                            temp[OUTWIDTH-1:OUTWIDTH-INWIDTH] <= LASTPAD;
+                        PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1): begin // reached end of shift register
+                            temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= PAD_ENDING;
                             pad_counter <= 2;
                         end
                     endcase
                 end
             endcase
-        counter <= counter + 1;
-        if (counter == $clog2(OUTWIDTH/INWIDTH)'(OUTWIDTH - 1)) begin
+        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1)) begin
             outclk <= 1;
             out   <= temp;
         end
+        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT/2 - 1)) begin
+            outclk <= 0;
+        end
+        counter <= counter + 1;
     end
 endmodule

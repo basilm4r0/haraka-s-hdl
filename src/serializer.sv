@@ -2,8 +2,8 @@ module serializer
 # (parameter INWIDTH = 256, parameter OUTWIDTH = 8)
 (in, length, bclk, clk, serial_out, reset);
     input [INWIDTH-1:0] in;
-    input [$clog2(INWIDTH/OUTWIDTH)-1:0] length;
-    logic [$clog2(INWIDTH/OUTWIDTH)-1:0] counter;
+    input [$clog2(INWIDTH/OUTWIDTH):0] length;
+    logic [$clog2(INWIDTH/OUTWIDTH):0] counter;
     input bclk,clk;
     input reset;
     logic [INWIDTH-1:0] shift_reg;
