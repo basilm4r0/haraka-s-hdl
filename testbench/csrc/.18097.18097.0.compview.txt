@@ -1,0 +1,6 @@
+{"vcs1":{"timestamp_begin":1738862753.660250415, "rt":1.34, "ut":1.57, "st":0.20}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1738862753.099250941}
+{"VCS_COMP_START_TIME": 1738862753.099250941}
+{"VCS_COMP_END_TIME": 1738862755.063479896}
+{"VCS_USER_OPTIONS": "-full64 -sverilog -ntb_opts uvm-1.2 +vcs+lic+wait +vcs+flush+all -kdb +error+5000 -lca -debug_access+all top_test.sv"}
+{"vcs1": {"peak_mem": 492912}}

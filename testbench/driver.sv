@@ -41,15 +41,14 @@ class haraka_s_driver extends uvm_driver #(haraka_s_sequence_item);
     //7. Drive
     task drive(haraka_s_sequence_item item);
         `uvm_info(get_type_name(), $sformatf("Driver: Sending data to DUT\n %s", item.sprint()),UVM_NONE)
-        vif.in      <= item.in;
-        vif.d       <= item.d;
-        vif.enable  <= item.enable;
-        vif.encrypt <= item.encrypt;
-        vif.reset   <= item.reset;
-        vif.out     <= item.out;
+        vif.serial_in      <= item.serial_in;
+        vif.digest_length  <= item.digest_length;
+        vif.enable         <= item.enable;
+        vif.reset          <= item.reset;
+        vif.out            <= item.out;
  
         //TODO: check this before running 
-        @(posedge vif.driver.clk);
+        // @(posedge driver.vif.clk);
 
     endtask : drive
 

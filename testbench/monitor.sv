@@ -37,12 +37,11 @@ class haraka_s_monitor extends uvm_monitor();
         super.run_phase(phase);
         forever begin
             item = haraka_s_sequence_item::type_id::create("item");
-            @(posedge vif.monitor.clk);
+            // @(posedge monitor.vif.clk);
     
-            item.in = vif.in;
-            item.d = vif.d;
+            item.serial_in = vif.serial_in;
+            item.digest_length = vif.digest_length;
             item.enable = vif.enable;
-            item.encrypt = vif.encrypt;
             item.reset = vif.reset;
             item.out = vif.out;    
 
