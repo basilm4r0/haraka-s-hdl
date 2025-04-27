@@ -1,5 +1,5 @@
 module deserializer
-(serial_in, enable, clear, clk, outclk, out, output_ready, start_squeeze);
+(serial_in, process_input, clear, clk, outclk, out, output_ready, start_squeeze);
 
     parameter IN_WIDTH = 8,
               OUT_WIDTH = 256,
@@ -9,16 +9,18 @@ module deserializer
               PAD_ENDING = 'h80;
 
     input [IN_WIDTH-1:0] serial_in;
-    input enable;
+    input process_input;
     input clear;
     input clk;
     output logic outclk;
     output logic [OUT_WIDTH-1:0] out;
     output logic output_ready;
-    output wire start_squeeze = pad_counter[1];
+    output wire start_squeeze;
     logic [OUT_WIDTH-1:0] temp;
     logic [PACKET_COUNTER_WIDTH-1:0] counter;
     logic [1:0] pad_counter;
+
+    assign start_squeeze = pad_counter[1];
 
     always @(posedge clk, posedge clear) begin
         if (clear) begin
@@ -29,7 +31,7 @@ module deserializer
             output_ready <= 0;
         end
         temp[OUT_WIDTH-1-IN_WIDTH:0] <= temp[OUT_WIDTH-1:IN_WIDTH];
-        if (enable) begin
+        if (process_input) begin
             temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= serial_in;
         end
         else    // padding scheme specified in FIPS PUB 202 for SHAKE256

@@ -1,10 +1,14 @@
-module Haraka_S (serial_in, digest_length, enable, clk, reset, out);
+module Haraka_S (serial_in, process_input, digest_length, enable, clk, reset, out);
 	input [8-1:0] serial_in;
+    input process_input;
 	input [64-1:0] digest_length;
 	input enable;
 	input clk;
 	input reset;
 	output logic [8-1:0] out;
+
+	wire gated_clk;
+	assign gated_clk = clk && enable;
 
 	wire internal_clk;
 	logic [256-1:0] padded;
@@ -15,17 +19,17 @@ module Haraka_S (serial_in, digest_length, enable, clk, reset, out);
 	logic [3:0] round;
 	logic [127:0] rc [7:0];
 	logic [255:0] serializer_input;
-	logic [63:0] counter;
+	logic [58:0] counter;
 	wire output_ready;
 	wire start_squeeze;
 	logic [5:0] serializer_length;
 	logic [127:0] round_constants [39:0];
 	wire deserialized_output_ready;
 
-	deserializer deserializer (.serial_in(serial_in), .enable(enable), .clk(clk), .out(padded), .outclk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
-	Haraka Haraka (.in(haraka_in), .rc(rc), .clk(clk), .out(haraka_out), .reset(reset), .output_ready(output_ready));
-	serializer serializer (.in(serializer_input), .length(serializer_length), .bclk(clk), .clk(internal_clk), .reset(reset), .serial_out(out));
-	
+deserializer deserializer (.serial_in(serial_in), .process_input(process_input), .clk(gated_clk), .out(padded), .outclk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
+	Haraka Haraka (.in(haraka_in), .rc(rc), .clk(gated_clk), .out(haraka_out), .reset(reset), .output_ready(output_ready));
+	serializer serializer (.in(serializer_input), .length(serializer_length), .bclk(gated_clk), .clk(internal_clk), .reset(reset), .serial_out(out));
+
 	always_ff @(posedge internal_clk, posedge reset) begin
 		if (reset) begin
 			rate <= 0;
@@ -33,22 +37,24 @@ module Haraka_S (serial_in, digest_length, enable, clk, reset, out);
 			round <= 0;
 			counter <= 0;
 		end
-		else if(output_ready) begin
-			rate <= haraka_out[511:256];
-			capacity <= haraka_out[255:0];
-		end
-		if (start_squeeze || (counter != 0)) begin
-			counter <= counter + 1;
-			if (counter < digest_length>>5) begin
-				serializer_input <= rate;
-				serializer_length <= 32;
+		else begin
+			if (output_ready) begin
+				rate <= haraka_out[511:256];
+				capacity <= haraka_out[255:0];
 			end
-			else if (counter < (digest_length>>5 + 3'(digest_length[4:0] != 0))) begin // counter < # of blocks needed to contain digest length
-				serializer_input <= rate;
-				serializer_length <= digest_length[5:0];
+			if (start_squeeze || (counter != 0)) begin
+				counter <= counter + 1;
+				if (counter < digest_length>>5) begin
+					serializer_input <= rate;
+					serializer_length <= 32;
+				end
+				else if (counter < (digest_length>>5 + (digest_length[4:0] != 0))) begin // counter < # of blocks needed to contain digest length
+					serializer_input <= rate;
+					serializer_length <= digest_length[5:0];
+				end
+				else
+					serializer_input <= 0;
 			end
-			else
-				serializer_input <= 0;
 		end
 	end
 
