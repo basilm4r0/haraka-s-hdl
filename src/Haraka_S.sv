@@ -20,8 +20,9 @@ module Haraka_S (serial_in, digest_length, enable, clk, reset, out);
 	wire start_squeeze;
 	logic [5:0] serializer_length;
 	logic [127:0] round_constants [39:0];
+	wire deserialized_output_ready;
 
-	deserializer deserializer (.serial_in(serial_in), .enable(enable), .clk(clk), .out(padded), .outclk(internal_clk), .clear(reset), .start_squeeze(start_squeeze));
+	deserializer deserializer (.serial_in(serial_in), .enable(enable), .clk(clk), .out(padded), .outclk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
 	Haraka Haraka (.in(haraka_in), .rc(rc), .clk(clk), .out(haraka_out), .reset(reset), .output_ready(output_ready));
 	serializer serializer (.in(serializer_input), .length(serializer_length), .bclk(clk), .clk(internal_clk), .reset(reset), .serial_out(out));
 	

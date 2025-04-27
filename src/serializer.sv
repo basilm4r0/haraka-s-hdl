@@ -13,8 +13,8 @@ module serializer
     always_ff @(posedge bclk, posedge reset) begin
         if (reset) begin
             shift_reg <= 0;
-            input_captured <= 0;
             counter <= 0;
+            input_captured <= 0;
         end
 
         if (clk && !input_captured) begin

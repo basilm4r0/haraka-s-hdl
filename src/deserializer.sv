@@ -1,5 +1,5 @@
 module deserializer
-(serial_in, enable, clear, clk, outclk, out, start_squeeze);
+(serial_in, enable, clear, clk, outclk, out, output_ready, start_squeeze);
 
     parameter IN_WIDTH = 8,
               OUT_WIDTH = 256,
@@ -9,21 +9,24 @@ module deserializer
               PAD_ENDING = 'h80;
 
     input [IN_WIDTH-1:0] serial_in;
-    input clk;
-    output logic outclk;
     input enable;
     input clear;
+    input clk;
+    output logic outclk;
+    output logic [OUT_WIDTH-1:0] out;
+    output logic output_ready;
+    output wire start_squeeze = pad_counter[1];
     logic [OUT_WIDTH-1:0] temp;
     logic [PACKET_COUNTER_WIDTH-1:0] counter;
     logic [1:0] pad_counter;
-    output logic [OUT_WIDTH-1:0] out;
-    output wire start_squeeze = pad_counter[1];
 
     always @(posedge clk, posedge clear) begin
         if (clear) begin
             temp <= 0;
             counter <= 0;
             pad_counter <= 0;
+            outclk <= 0;
+            output_ready <= 0;
         end
         temp[OUT_WIDTH-1-IN_WIDTH:0] <= temp[OUT_WIDTH-1:IN_WIDTH];
         if (enable) begin
@@ -47,12 +50,16 @@ module deserializer
                     endcase
                 end
             endcase
-        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1)) begin
-            outclk <= 1;
-            out   <= temp;
+        // Haraka clk 4 times frequency of deserialized output because it
+        // takes 4 clock cycles for Haraka module's output to be ready
+        if (counter % PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT/4) == 0) begin
+            outclk <= !outclk;
+            if (output_ready == 1)
+                output_ready <= 0;
         end
-        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT/2 - 1)) begin
-            outclk <= 0;
+        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1)) begin
+            out   <= temp;
+            output_ready <= 1;
         end
         counter <= counter + 1;
     end
