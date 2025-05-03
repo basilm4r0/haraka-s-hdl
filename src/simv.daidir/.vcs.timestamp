@@ -1,0 +1,122 @@
+0
+49
++itf+/usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/vcsdp_lite.tab
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/usr/synopsys/vcs/T-2022.06-SP2/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/libvirsim.so /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/liberrorinf.so /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/libsnpsmalloc.so /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=/usr/synopsys/verdi/T-2022.06-SP2/share/PLI/VCS/LINUX64/pli.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/usr/synopsys/vcs/T-2022.06-SP2/include
+-Mxllcflags=
+-P
+-Xufe=2steps
+-debug_access+all+reverse
+-fsdb
+-full64
+-gen_obj
+-kdb
+-lca
+-o simv
+-picarchive
+-sverilog
+/usr/synopsys/vcs/T-2022.06-SP2/linux64/bin/vcs1
+simv
+/usr/synopsys/verdi/T-2022.06-SP2/share/PLI/VCS/LINUX64/verdi.tab
+top.sv
+deserializer.sv
+serializer.sv
+Mux512.sv
+QuadAes.sv
+Aes.sv
+S_box.sv
+Register.sv
+ShiftRows.sv
+MixColumns.sv
+AddRC.sv
+Mix512.sv
+Demux512.sv
+Haraka.sv
+Haraka_S.sv
+43
+XDG_SESSION_ID=3944
+XDG_RUNTIME_DIR=/run/user/781
+XDG_DATA_DIRS=/home/aseel/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+VMR_MODE_FLAG=64
+VERDI_HOME=/usr/synopsys/verdi/T-2022.06-SP2
+VCS_TARGET_ARCH=linux64
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LCAMSG_PRINT_OFF=1
+VCS_HOME=/usr/synopsys/vcs/T-2022.06-SP2
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+UNAME=/bin/uname
+TOOL_HOME=/usr/synopsys/vcs/T-2022.06-SP2/linux64
+SYN_INSTALLER=/usr/synopsys/Installer5_5
+SYNOPSYS_LC_ROOT=/usr/synopsys/prime/U-2022.12-SP5/libraries/syn
+SYNOPSYS=/usr/synopsys/syn/R-2020.09-SP5-5
+SYNOPSYS1=/usr/synopsys
+SSH_TTY=/dev/pts/19
+SSH_CONNECTION=82.205.36.131 65333 172.16.2.21 22
+SSH_CLIENT=82.205.36.131 65333 22
+SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
+SNPS_VCS_CLANG_PATH=/usr/synopsys/vcs/T-2022.06-SP2/linux64/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+SCL_ROOT=/usr/synopsys/scl/2021.03
+SAED14_PDK=/usr/synopsys/saed/SAED14nm_PDK_12142021/SAED14_PDK
+OVA_UUM=0
+OS_LDFLAGS=
+MFLAGS=
+MAKELEVEL=1
+MAKEFLAGS=
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+ICC_ROOT=/usr/synopsys/icc2/U-2022.12-SP5
+HISTCONTROL=ignoredups
+CVS_RSH=ssh
+CORETOOLS=/usr/synopsys/coretools/N-2017.12
+CDESIGNER=/usr/synopsys/syn/R-2020.09-SP5-5
+0
+0
+17
+1746090673 Haraka_S.sv
+1745780655 Haraka.sv
+1707515319 Demux512.sv
+1707515319 Mix512.sv
+1707515319 AddRC.sv
+1707515319 MixColumns.sv
+1707515319 ShiftRows.sv
+1745780655 Register.sv
+1707515319 S_box.sv
+1745780655 Aes.sv
+1745780655 QuadAes.sv
+1707515319 Mux512.sv
+1745780655 serializer.sv
+1746277979 deserializer.sv
+1746278171 top.sv
+1669114307 /usr/synopsys/verdi/T-2022.06-SP2/share/PLI/VCS/LINUX64/verdi.tab
+1669781155 /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/vcsdp_lite.tab
+4
+1669783182 /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/libvirsim.so
+1669782209 /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/liberrorinf.so
+1669782120 /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/libsnpsmalloc.so
+1669782200 /usr/synopsys/vcs/T-2022.06-SP2/linux64/lib/libvfs.so
+1746278186 simv.daidir
+-1 partitionlib

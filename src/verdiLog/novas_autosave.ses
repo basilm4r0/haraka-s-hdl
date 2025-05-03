@@ -1,0 +1,69 @@
+@verdi rc file Version 1.0
+[General]
+saveDB = TRUE
+relativePath = FALSE
+saveSingleView = FALSE
+saveNWaveWinId = 
+VerdiVersion = Verdi_T-2022.06-SP2
+[KeyNote]
+Line1 = Automatic Backup 0
+Line2 = Save Open Database Information: Yes
+Line3 = Path Option: Absolute Paths
+Line4 = Windows Option: All Windows
+[OneSearch]
+isExisted = TRUE
+[TestBench]
+ConstrViewShow = 0
+InherViewShow = 0
+FSDBMsgShow = 0
+AnnotationShow = 0
+Console = FALSE
+powerDumped = 0
+[fusa]
+fdb_server = 
+fdb_proj = 
+fdb_campaign = 
+fdb_tool = 
+[hb]
+postSimFile = /home/aseel/haraka-s-hdl/src/simv.fsdb
+syncTime = 75
+viewport = 0 27 1920 977 0 0 79 1918
+activeNode = "top.harka_s.deserializer"
+activeScope = "top.harka_s.deserializer"
+activeFile = "deserializer.sv"
+interactiveMode = False
+viewType = Source
+simulatorMode = False
+sourceBeginLine = 39
+baMode = False
+srcLineNum = True
+AutoWrap = True
+IdentifyFalseLogic = False
+syncSignal = False
+traceMode = Hierarchical
+showTraceInSchema = True
+paMode = False
+funcMode = False
+powerAwareAnnot = True
+safetyAwareAnnot = True
+amsAnnot = True
+DnDtraceCrossHierOnly = True
+leadingZero = False
+signalPane = False
+SourceVerticalScrollLines = 5
+Scope1 = "top.harka_s.deserializer"
+Scope2 = "top"
+multipleSelection = 1 64 8 0 0
+sdfCheckUndef = FALSE
+simFlow = FALSE
+[hb.design]
+importCmd = "-dbdir" "/home/aseel/haraka-s-hdl/src/simv.daidir" 
+invokeDir = /home/aseel/haraka-s-hdl/src
+[hb.sourceTab.1]
+scope = top.harka_s.deserializer
+File = /home/aseel/haraka-s-hdl/src/deserializer.sv
+Line = 40
+[nMemoryManager]
+WaveformFile = /home/aseel/haraka-s-hdl/src/simv.fsdb
+UserActionNum = 0
+nMemWindowNum = 0

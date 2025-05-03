@@ -1,9 +1,10 @@
 # flags
 VCS       = vcs
-VCS_FLAGS = -full64 -sverilog
+VCS_FLAGS = -full64 -sverilog -lca -kdb -debug_access+all+reverse 
 
 # needed source files 
 SRC = \
+    top.sv \
     deserializer.sv \
     serializer.sv \
     Mux512.sv \
@@ -18,6 +19,7 @@ SRC = \
     Demux512.sv \
     Haraka.sv \
     Haraka_S.sv \
+  
 
 # target: compile and run simulation
 all: simv

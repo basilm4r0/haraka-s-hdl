@@ -26,7 +26,7 @@ module Haraka_S (serial_in, process_input, digest_length, enable, clk, reset, ou
 	logic [127:0] round_constants [39:0];
 	wire deserialized_output_ready;
 
-deserializer deserializer (.serial_in(serial_in), .process_input(process_input), .clk(gated_clk), .out(padded), .outclk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
+	deserializer deserializer (.serial_in(serial_in), .process_input(process_input), .clk(gated_clk), .out(padded), .outclk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
 	Haraka Haraka (.in(haraka_in), .rc(rc), .clk(gated_clk), .out(haraka_out), .reset(reset), .output_ready(output_ready));
 	serializer serializer (.in(serializer_input), .length(serializer_length), .bclk(gated_clk), .clk(internal_clk), .reset(reset), .serial_out(out));
 
@@ -112,5 +112,6 @@ deserializer deserializer (.serial_in(serial_in), .process_input(process_input),
 	assign round_constants[37] = 128'hae51a51a1bdff7be40c06e2822901235;
 	assign round_constants[38] = 128'ha0c1613cba7ed22bc173bc0f48a659cf;
 	assign round_constants[39] = 128'h756acc03022882884ad6bdfde9c59da1;
+
 
 endmodule

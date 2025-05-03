@@ -1,0 +1,1413 @@
+Invoking simulator...
+Verdi>/home/aseel/haraka-s-hdl/src/simv -sml=verdi +fsdb+gate=off -ucli2Proc -ucli
+*Verdi* Loading libsscore_vcs202206.so
+FSDB Dumper for VCS, Release Verdi_T-2022.06-SP2, Linux x86_64/64bit, 11/22/2022
+(C) 1996 - 2022 by Synopsys, Inc.
+*Verdi* : Create FSDB file '/home/aseel/haraka-s-hdl/src/inter.fsdb'
+*Verdi* : Flush all FSDB Files at 0 s.
+*Verdi* : Enable RPC Server(22838)
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06-SP2_Full64; Runtime version T-2022.06-SP2_Full64;  May  1 22:28 2025
+Error-[UCLI-STOP-UNABLE-SET-STOP-POINT] Unable to set breakpoint
+  The setting of line breakpoint in file 
+  /home/aseel/haraka-s-hdl/src/Haraka_S.sv line 1 due to 'stop' command was 
+  not successful. 
+  Please verify that the 'stop' command arguments are valid and that the 
+  statement/enclosing subprogram at file/line is complete and used in the 
+  design.  Also verify that the statement on which the BP is being added is in
+  a module compiled with line debug capability.  If the BP is being set inside
+  a TF, make sure the design is not compiled with '+vpi+1'.  Please recompile 
+  using the '-debug_access<+options>' switch and incremental options as 
+  required.  Recommended options are '-debug_access' for post-process debug, 
+  '-debug_access+class' for testbench debug, and '-debug_access+all' for all 
+  debug capabilities.  Refer the VCS user guide for more granular options for 
+  debug control under the switch '-debug_access' and refer to '-debug_region' 
+  for region control.
+Error-[UCLI-STOP-UNABLE-SET-STOP-POINT] Unable to set breakpoint
+  The setting of line breakpoint in file 
+  /home/aseel/haraka-s-hdl/src/Haraka_S.sv line 1 due to 'stop' command was 
+  not successful. 
+  Please verify that the 'stop' command arguments are valid and that the 
+  statement/enclosing subprogram at file/line is complete and used in the 
+  design.  Also verify that the statement on which the BP is being added is in
+  a module compiled with line debug capability.  If the BP is being set inside
+  a TF, make sure the design is not compiled with '+vpi+1'.  Please recompile 
+  using the '-debug_access<+options>' switch and incremental options as 
+  required.  Recommended options are '-debug_access' for post-process debug, 
+  '-debug_access+class' for testbench debug, and '-debug_access+all' for all 
+  debug capabilities.  Refer the VCS user guide for more granular options for 
+  debug control under the switch '-debug_access' and refer to '-debug_region' 
+  for region control.
+Verdi>stop -line 1 -file /home/aseel/haraka-s-hdl/src/Haraka_S.sv 
+Error-[UCLI-STOP-UNABLE-SET-STOP-POINT] Unable to set breakpoint
+  The setting of line breakpoint in file 
+  /home/aseel/haraka-s-hdl/src/Haraka_S.sv line 1 due to 'stop' command was 
+  not successful. 
+  Please verify that the 'stop' command arguments are valid and that the 
+  statement/enclosing subprogram at file/line is complete and used in the 
+  design.  Also verify that the statement on which the BP is being added is in
+  a module compiled with line debug capability.  If the BP is being set inside
+  a TF, make sure the design is not compiled with '+vpi+1'.  Please recompile 
+  using the '-debug_access<+options>' switch and incremental options as 
+  required.  Recommended options are '-debug_access' for post-process debug, 
+  '-debug_access+class' for testbench debug, and '-debug_access+all' for all 
+  debug capabilities.  Refer the VCS user guide for more granular options for 
+  debug control under the switch '-debug_access' and refer to '-debug_region' 
+  for region control.
+Verdi>stop -line 29 -file /home/aseel/haraka-s-hdl/src/Haraka_S.sv 
+Error-[UCLI-STOP-UNABLE-SET-STOP-POINT] Unable to set breakpoint
+  The setting of line breakpoint in file 
+  /home/aseel/haraka-s-hdl/src/Haraka_S.sv line 29 due to 'stop' command was 
+  not successful. 
+  Please verify that the 'stop' command arguments are valid and that the 
+  statement/enclosing subprogram at file/line is complete and used in the 
+  design.  Also verify that the statement on which the BP is being added is in
+  a module compiled with line debug capability.  If the BP is being set inside
+  a TF, make sure the design is not compiled with '+vpi+1'.  Please recompile 
+  using the '-debug_access<+options>' switch and incremental options as 
+  required.  Recommended options are '-debug_access' for post-process debug, 
+  '-debug_access+class' for testbench debug, and '-debug_access+all' for all 
+  debug capabilities.  Refer the VCS user guide for more granular options for 
+  debug control under the switch '-debug_access' and refer to '-debug_region' 
+  for region control.
+Verdi>stop -line 33 -file /home/aseel/haraka-s-hdl/src/Haraka_S.sv 
+1
+Verdi>step 
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>run
+*Verdi* WARNING: Env/runtime option has specified fsdbfile name as "/home/aseel/haraka-s-hdl/src/inter.fsdb". Fsdbfile name in task "simv.fsdb" is ignored.
+*Verdi* : Begin traversing the scope (top), layer (0).
+*Verdi* : End of traversing.
+
+Stop point #1 @ 0 s;  
+Verdi>step 
+Haraka.sv, 13 : 		if (reset) begin
+Verdi>step 
+Haraka.sv, 14 : 			round_counter <= 0;
+Verdi>step 
+Haraka.sv, 15 : 			output_ready <= 0;
+Verdi>step 
+deserializer.sv, 26 :         if (clear) begin
+Verdi>step 
+deserializer.sv, 27 :             temp <= 0;
+Verdi>step 
+deserializer.sv, 28 :             counter <= 0;
+Verdi>step 
+deserializer.sv, 29 :             pad_counter <= 0;
+Verdi>force {top.harka_s.deserializer.counter[4:0]} {0} -freeze
+Verdi>force {top.harka_s.deserializer.pad_counter[1:0]} {0} -freeze
+Verdi>step 
+deserializer.sv, 29 :             pad_counter <= 0;
+Verdi>step 
+deserializer.sv, 30 :             outclk <= 0;
+Verdi>force {top.harka_s.deserializer.outclk} {0} -freeze
+Verdi>step 
+deserializer.sv, 31 :             output_ready <= 0;
+Verdi>force {top.harka_s.deserializer.output_ready} {0} -freeze
+Verdi>step 
+deserializer.sv, 33 :         temp[OUT_WIDTH-1-IN_WIDTH:0] <= temp[OUT_WIDTH-1:IN_WIDTH];
+Verdi>step 
+deserializer.sv, 34 :         if (process_input) begin
+Verdi>step 
+deserializer.sv, 38 :             case (pad_counter)
+Verdi>step 
+deserializer.sv, 40 :                     temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= PAD_BEGINNING;
+Verdi>step 
+deserializer.sv, 41 :                     pad_counter <= 1;
+Verdi>step 
+deserializer.sv, 57 :         if (counter % PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT/4) == 0) begin
+Verdi>step 
+deserializer.sv, 58 :             outclk <= !outclk;
+Verdi>step 
+deserializer.sv, 59 :             if (output_ready == 1)
+Verdi>step 
+deserializer.sv, 62 :         if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1)) begin
+Verdi>step 
+deserializer.sv, 66 :         counter <= counter + 1;
+Verdi>step 
+serializer.sv, 14 :         if (reset) begin
+Verdi>step 
+serializer.sv, 15 :             shift_reg <= 0;
+Verdi>step 
+serializer.sv, 16 :             counter <= 0;
+Verdi>step 
+serializer.sv, 17 :             input_captured <= 0;
+Verdi>step 
+serializer.sv, 20 :         if (clk && !input_captured) begin
+Verdi>step 
+serializer.sv, 26 :         if (!clk)
+Verdi>step 
+serializer.sv, 27 :             input_captured <= 0;
+Verdi>step 
+serializer.sv, 29 :         if (counter > 0) begin
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>fsdbDumpvars 1 "top.harka_s.deserializer"  +all +trace_process;fsdbDumpflush 
+
+*Verdi* : Begin traversing the scope (top.harka_s.deserializer), layer (1).
+*Verdi* : Enable +trace_process and +all dumping.
+*Verdi* : End of traversing.
+*Verdi* : Flush all FSDB Files at 0 s.
+
+Verdi>step 
+Register.sv, 10 : 		if (reset) begin
+Verdi>step 
+Register.sv, 11 : 			out <= 0;
+Verdi>step 
+Register.sv, 12 : 			round_constant_out <= 0;
+Verdi>step 
+Haraka_S.sv, 34 : 		if (reset) begin
+Verdi>step 
+Haraka_S.sv, 35 : 			rate <= 0;
+Verdi>step 
+Haraka_S.sv, 36 : 			capacity <= 0;
+Verdi>step 
+Haraka_S.sv, 37 : 			round <= 0;
+Verdi>step 
+Haraka_S.sv, 38 : 			counter <= 0;
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+Haraka_S.sv, 63 : 	always_comb begin
+Verdi>step 
+Mux512.sv, 6 : 	always_comb begin
+Verdi>step 
+Mix512.sv, 14 : 	always_comb begin
+Verdi>step 
+Demux512.sv, 6 : 	always_comb begin
+Verdi>step 
+Haraka.sv, 28 : 	assign sel = (round_counter < 4)? 0: 1;
+Verdi>step 
+Mux512.sv, 6 : 	always_comb begin
+Verdi>step 
+Demux512.sv, 6 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 19 :     always_comb begin
+Verdi>step 
+AddRC.sv, 5 : 	always_comb begin
+Verdi>step 
+Haraka_S.sv, 61 : 	assign haraka_in = {rate^padded, capacity};
+Verdi>step 
+Haraka_S.sv, 63 : 	always_comb begin
+Verdi>step 
+ShiftRows.sv, 21 :         out[127:96] = in[127:96];
+Verdi>step 
+ShiftRows.sv, 23 :         out[95:64] = (in[95:64] << 8) | (in[95:64] >> 24);
+Verdi>step 
+ShiftRows.sv, 25 :         out[63:32] = (in[63:32] << 16) | (in[63:32] >> 16);
+Verdi>step 
+ShiftRows.sv, 27 :         out[31:0] = (in[31:0] << 24) | (in[31:0] >> 8);
+Verdi>step 
+MixColumns.sv, 6 :   always_comb begin
+Verdi>step 
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>step 
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>step 
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>step 
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>step 
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>step 
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>step 
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>step 
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>step 
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>step 
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>step 
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>step 
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>step 
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>step 
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>step 
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>step 
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>step 
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 23 :       a = col[0][i];
+Verdi>step 
+MixColumns.sv, 24 :       b = col[1][i];
+Verdi>step 
+MixColumns.sv, 25 :       c = col[2][i];
+Verdi>step 
+MixColumns.sv, 26 :       d = col[3][i];
+Verdi>step 
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>step 
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>step 
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>step 
+MixColumns.sv, 23 :       a = col[0][i];
+Verdi>step 
+MixColumns.sv, 24 :       b = col[1][i];
+Verdi>step 
+MixColumns.sv, 25 :       c = col[2][i];
+Verdi>step 
+MixColumns.sv, 26 :       d = col[3][i];
+Verdi>step 
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>step 
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>step 
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 23 :       a = col[0][i];
+Verdi>next
+MixColumns.sv, 24 :       b = col[1][i];
+Verdi>next
+MixColumns.sv, 25 :       c = col[2][i];
+Verdi>next
+MixColumns.sv, 26 :       d = col[3][i];
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 23 :       a = col[0][i];
+Verdi>next
+MixColumns.sv, 24 :       b = col[1][i];
+Verdi>next
+MixColumns.sv, 25 :       c = col[2][i];
+Verdi>next
+MixColumns.sv, 26 :       d = col[3][i];
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 36 :     out_data = {col[0][0], col[1][0], col[2][0], col[3][0],
+Verdi>next
+AddRC.sv, 5 : 	always_comb begin
+Verdi>next
+AddRC.sv, 6 : 		out = data ^ round_constant;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>step 
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>step 
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>step 
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>step 
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>step 
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>step 
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>step 
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>step 
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>step 
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>step 
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>step 
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>step 
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>step 
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>step 
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>step 
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>step 
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>step 
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>step 
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>step 
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>step 
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>step 
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 208 : 	assign B[2] = ~ A[0] ;
+Verdi>next
+S_box.sv, 218 : 	assign Y[0] = A[1] ^ R5 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 205 : 	assign B[5] = A[1] ^ R4 ;
+Verdi>next
+S_box.sv, 210 : 	assign B[0] = A[2] ~^ R9 ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 212 : 	assign Y[6] = A[4] ^ R8 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 197 : 	assign R4 = A[5] ~^ R3 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 195 : 	assign R2 = A[7] ~^ A[4] ;
+Verdi>next
+S_box.sv, 211 : 	assign Y[7] = R2 ;
+Verdi>next
+S_box.sv, 215 : 	assign Y[3] = A[6] ~^ R2 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 198 : 	assign R5 = A[4] ^ R4 ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+S_box.sv, 213 : 	assign Y[5] = A[6] ^ A[4] ;
+Verdi>next
+S_box.sv, 199 : 	assign R6 = A[3] ^ A[0] ;
+Verdi>next
+S_box.sv, 217 : 	assign Y[1] = A[4] ^ R6 ;
+Verdi>next
+S_box.sv, 207 : 	assign B[3] = A[1] ^ R2 ^ R6 ;
+Verdi>next
+S_box.sv, 196 : 	assign R3 = A[6] ^ A[0] ;
+Verdi>next
+S_box.sv, 194 : 	assign R1 = A[7] ^ A[5] ;
+Verdi>next
+ShiftRows.sv, 21 :         out[127:96] = in[127:96];
+Verdi>next
+ShiftRows.sv, 23 :         out[95:64] = (in[95:64] << 8) | (in[95:64] >> 24);
+Verdi>next
+ShiftRows.sv, 25 :         out[63:32] = (in[63:32] << 16) | (in[63:32] >> 16);
+Verdi>next
+ShiftRows.sv, 27 :         out[31:0] = (in[31:0] << 24) | (in[31:0] >> 8);
+Verdi>next
+MixColumns.sv, 6 :   always_comb begin
+Verdi>next
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>next
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>next
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>next
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>next
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>next
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>next
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>next
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>next
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>next
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>next
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>next
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>next
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 11 :       col[0][i] = in_data[127 - i*32 -: 8]; // extract the 1st column
+Verdi>next
+MixColumns.sv, 12 :       col[1][i] = in_data[119 - i*32 -: 8]; // extract the 2nd column
+Verdi>next
+MixColumns.sv, 13 :       col[2][i] = in_data[111 - i*32 -: 8]; // extract the 3ed column
+Verdi>next
+MixColumns.sv, 14 :       col[3][i] = in_data[103 - i*32 -: 8]; // extract the 4th column
+Verdi>next
+MixColumns.sv, 10 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 23 :       a = col[0][i];
+Verdi>next
+MixColumns.sv, 24 :       b = col[1][i];
+Verdi>next
+MixColumns.sv, 25 :       c = col[2][i];
+Verdi>next
+MixColumns.sv, 26 :       d = col[3][i];
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>next
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>next
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>next
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+Verdi>next
+MixColumns.sv, 23 :       a = col[0][i];
+Verdi>next
+MixColumns.sv, 24 :       b = col[1][i];
+Verdi>next
+MixColumns.sv, 25 :       c = col[2][i];
+Verdi>next
+MixColumns.sv, 26 :       d = col[3][i];
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 29 :       col[0][i] = mb2(a) ^ mb3(b) ^ c ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 30 :       col[1][i] = a ^ mb2(b) ^ mb3(c) ^ d;
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>next
+MixColumns.sv, 31 :       col[2][i] = a ^ b ^ mb2(c) ^ mb3(d);
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 62 : 			mb3 = mb2(x) ^ x;
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 47 : 			if(x[7] == 1) mb2 = ((x << 1) ^ 8'h1b);
+Verdi>step 
+MixColumns.sv, 48 : 			else mb2 = x << 1;
+Verdi>step 
+MixColumns.sv, 32 :       col[3][i] = mb3(a) ^ b ^ c ^ mb2(d);
+Verdi>step 
+MixColumns.sv, 18 :     for (int i = 0; i < 4; i++) begin
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 0
+CPU Time:      4.830 seconds;       Data structure size:   1.2Mb
+Thu May  1 22:44:23 2025
+debExit

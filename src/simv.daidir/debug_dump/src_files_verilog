@@ -1,0 +1,15 @@
+/home/aseel/haraka-s-hdl/src/AddRC.sv
+/home/aseel/haraka-s-hdl/src/Aes.sv
+/home/aseel/haraka-s-hdl/src/Demux512.sv
+/home/aseel/haraka-s-hdl/src/Haraka.sv
+/home/aseel/haraka-s-hdl/src/Haraka_S.sv
+/home/aseel/haraka-s-hdl/src/Mix512.sv
+/home/aseel/haraka-s-hdl/src/MixColumns.sv
+/home/aseel/haraka-s-hdl/src/Mux512.sv
+/home/aseel/haraka-s-hdl/src/QuadAes.sv
+/home/aseel/haraka-s-hdl/src/Register.sv
+/home/aseel/haraka-s-hdl/src/S_box.sv
+/home/aseel/haraka-s-hdl/src/ShiftRows.sv
+/home/aseel/haraka-s-hdl/src/deserializer.sv
+/home/aseel/haraka-s-hdl/src/serializer.sv
+/home/aseel/haraka-s-hdl/src/top.sv
