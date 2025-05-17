@@ -4,7 +4,7 @@ VCS_FLAGS = -full64 -sverilog -lca -kdb -debug_access+all+reverse
 
 # needed source files 
 SRC = \
-    top.sv \
+    ../direct_tests/top.sv \
     deserializer.sv \
     serializer.sv \
     Mux512.sv \

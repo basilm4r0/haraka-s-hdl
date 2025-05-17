@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1746278184.295933367, "rt":0.80, "ut":0.67, "st":0.25}}
-{"vcselab":{"timestamp_begin":1746278185.176366402, "rt":0.46, "ut":0.36, "st":0.11}}
-{"link":{"timestamp_begin":1746278185.703528228, "rt":0.27, "ut":0.19, "st":0.09}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1746278183.577953444}
-{"VCS_COMP_START_TIME": 1746278183.577953444}
-{"VCS_COMP_END_TIME": 1746278186.113529561}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -lca -kdb -debug_access+all+reverse top.sv deserializer.sv serializer.sv Mux512.sv QuadAes.sv Aes.sv S_box.sv Register.sv ShiftRows.sv MixColumns.sv AddRC.sv Mix512.sv Demux512.sv Haraka.sv Haraka_S.sv -o simv"}
-{"vcs1": {"peak_mem": 491132}}
-{"stitch_vcselab": {"peak_mem": 218836}}

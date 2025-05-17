@@ -3,7 +3,7 @@ module deserializer
     parameter IN_WIDTH = 8,
     parameter OUT_WIDTH = 256,
     parameter PACKETS_IN_OUTPUT = OUT_WIDTH / IN_WIDTH,
-    parameter PACKET_COUNTER_WIDTH = $clog2(PACKETS_IN_OUTPUT),
+    parameter PACKET_COUNTER_WIDTH = $clog2(PACKETS_IN_OUTPUT) + 1,
     parameter PAD_BEGINNING = 'h1f,
     parameter PAD_ENDING = 'h80
 )
@@ -19,7 +19,7 @@ module deserializer
 );
 
     logic [OUT_WIDTH-1:0] temp;
-    logic [PACKET_COUNTER_WIDTH-1:0] counter;
+    logic [PACKET_COUNTER_WIDTH:0] counter;
     logic [1:0] pad_counter;
 
     assign start_squeeze = pad_counter[1];
@@ -44,7 +44,7 @@ module deserializer
                         pad_counter <= 1;
                     end
                     1: begin
-                        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1)) begin
+                        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT)) begin
                             temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= PAD_ENDING;
                             pad_counter <= 2;
                         end else begin
@@ -54,8 +54,8 @@ module deserializer
                 endcase
             end
             $display("time = %0t: counter = %h, pkt size = %h", $time, counter, PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 1));
-            // output clock toggle every (PACKETS_IN_OUTPUT / 4) cycles
-            if (counter % PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT / 4) == 0) begin
+            // output clock toggle every (PACKETS_IN_OUTPUT / 2) cycles
+            if (counter % PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT / 2) == 0) begin
                 outclk <= ~outclk;
                 if (output_ready)
                     output_ready <= 0;

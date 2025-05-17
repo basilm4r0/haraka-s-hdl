@@ -40,8 +40,7 @@ module top;
         #20 reset = 0;
          
         // Start feeding data
-        enable = 1;
-        @(posedge clk); serial_in = 8'h48; process_input = 1;
+        @(posedge clk); enable = 1; serial_in = 8'h48; process_input = 1;
         @(posedge clk); serial_in = 8'h65;
         @(posedge clk); serial_in = 8'h6c;
         @(posedge clk); serial_in = 8'h6c;
