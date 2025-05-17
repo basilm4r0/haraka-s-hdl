@@ -3,7 +3,7 @@ module deserializer
     parameter IN_WIDTH = 8,
     parameter OUT_WIDTH = 256,
     parameter PACKETS_IN_OUTPUT = OUT_WIDTH / IN_WIDTH,
-    parameter PACKET_COUNTER_WIDTH = $clog2(PACKETS_IN_OUTPUT) + 1,
+    parameter PACKET_COUNTER_WIDTH = $clog2(PACKETS_IN_OUTPUT),
     parameter PAD_BEGINNING = 'h1f,
     parameter PAD_ENDING = 'h80
 )
@@ -19,7 +19,7 @@ module deserializer
 );
 
     logic [OUT_WIDTH-1:0] temp;
-    logic [PACKET_COUNTER_WIDTH:0] counter;
+    logic [PACKET_COUNTER_WIDTH-1:0] counter;
     logic [1:0] pad_counter;
 
     assign start_squeeze = pad_counter[1];
@@ -27,7 +27,7 @@ module deserializer
     always @(posedge clk or posedge clear) begin
         if (clear) begin
             temp         <= 0;
-            counter      <= 0;
+            counter      <= 31;
             pad_counter  <= 0;
             outclk       <= 0;
             output_ready <= 0;
@@ -44,7 +44,7 @@ module deserializer
                         pad_counter <= 1;
                     end
                     1: begin
-                        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT)) begin
+                        if (counter == PACKET_COUNTER_WIDTH'(PACKETS_IN_OUTPUT - 2)) begin
                             temp[OUT_WIDTH-1:OUT_WIDTH-IN_WIDTH] <= PAD_ENDING;
                             pad_counter <= 2;
                         end else begin
