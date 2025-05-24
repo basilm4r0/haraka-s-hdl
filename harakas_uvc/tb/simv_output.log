@@ -1,0 +1,390 @@
+Chronologic VCS simulator copyright 1991-2022
+Contains Synopsys proprietary information.
+Compiler version T-2022.06-SP2_Full64; Runtime version T-2022.06-SP2_Full64;  May 24 17:26 2025
+----------------------------------------------------------------
+UVM-1.1d.Synopsys
+(C) 2007-2013 Mentor Graphics Corporation
+(C) 2007-2013 Cadence Design Systems, Inc.
+(C) 2006-2013 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test hello_message_test...
+UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+---------------------------------------------------------------
+Name                        Type                    Size  Value
+---------------------------------------------------------------
+uvm_test_top                hello_message_test      -     @461 
+  env                       harakas_env             -     @473 
+    agent                   harakas_agent           -     @484 
+      driver                harakas_driver          -     @502 
+        rsp_port            uvm_analysis_port       -     @517 
+          recording_detail  integral                32    'd1  
+        seq_item_port       uvm_seq_item_pull_port  -     @509 
+          recording_detail  integral                32    'd1  
+        recording_detail    integral                32    'd1  
+      monitor               harakas_monitor         -     @525 
+        monitor_port        uvm_analysis_port       -     @642 
+          recording_detail  integral                32    'd1  
+        recording_detail    integral                32    'd1  
+      sequencer             harakas_sequencer       -     @532 
+        rsp_export          uvm_analysis_export     -     @539 
+          recording_detail  integral                32    'd1  
+        seq_item_export     uvm_seq_item_pull_imp   -     @633 
+          recording_detail  integral                32    'd1  
+        recording_detail    integral                32    'd1  
+        arbitration_queue   array                   0     -    
+        lock_queue          array                   0     -    
+        num_last_reqs       integral                32    'd1  
+        num_last_rsps       integral                32    'd1  
+      recording_detail      integral                32    'd1  
+    scb                     harakas_scoreboard      -     @491 
+      scoreboard_port       uvm_analysis_imp        -     @656 
+        recording_detail    integral                32    'd1  
+      recording_detail      integral                32    'd1  
+    recording_detail        integral                32    'd1  
+---------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_seqs.sv(20) @ 0: uvm_test_top.env.agent.sequencer@@hello_message_seq [hello_message_seq] raise objection
+UVM_INFO ../sv/harakas_seqs.sv(102) @ 0: uvm_test_top.env.agent.sequencer@@hello_message_seq [hello_message_seq] Executing hello_message_seq sequence
+UVM_INFO ../sv/harakas_seqs.sv(54) @ 0: uvm_test_top.env.agent.sequencer@@hello_message_seq.reset_s [reset_seq] Executing reset_seq
+UVM_INFO ../sv/harakas_driver.sv(44) @ 5: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @683                                                      
+  serial_in                    integral         8     'h0                                                       
+  digest_length                integral         64    'h0                                                       
+  process_input                integral         1     'h0                                                       
+  enable                       integral         1     'h0                                                       
+  reset                        integral         1     'h1                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    0                                                         
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     reset_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.reset_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_seqs.sv(71) @ 5: uvm_test_top.env.agent.sequencer@@hello_message_seq.hello_s [send_hello_seq] Sending 'Hello' characters
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 15: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @711 
+  serial_in      integral         8     'h0  
+  digest_length  integral         64    'h0  
+  process_input  integral         1     'h0  
+  enable         integral         1     'h0  
+  reset          integral         1     'h1  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 15: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 15: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 15: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x0, process_input = 0, reset = 1
+UVM_INFO ../sv/harakas_driver.sv(44) @ 15: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @724                                                      
+  serial_in                    integral         8     'h48                                                      
+  digest_length                integral         64    'h20                                                      
+  process_input                integral         1     'h1                                                       
+  enable                       integral         1     'h1                                                       
+  reset                        integral         1     'h0                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    5                                                         
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     hello_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.hello_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 25: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @732 
+  serial_in      integral         8     'h48 
+  digest_length  integral         64    'h20 
+  process_input  integral         1     'h1  
+  enable         integral         1     'h1  
+  reset          integral         1     'h0  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 25: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 25: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 25: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x48, process_input = 1, reset = 0
+UVM_INFO ../sv/harakas_driver.sv(44) @ 25: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @740                                                      
+  serial_in                    integral         8     'h65                                                      
+  digest_length                integral         64    'h20                                                      
+  process_input                integral         1     'h1                                                       
+  enable                       integral         1     'h1                                                       
+  reset                        integral         1     'h0                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    15                                                        
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     hello_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.hello_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 35: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @748 
+  serial_in      integral         8     'h65 
+  digest_length  integral         64    'h20 
+  process_input  integral         1     'h1  
+  enable         integral         1     'h1  
+  reset          integral         1     'h0  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 35: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 35: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 35: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x65, process_input = 1, reset = 0
+UVM_INFO ../sv/harakas_driver.sv(44) @ 35: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @756                                                      
+  serial_in                    integral         8     'h6c                                                      
+  digest_length                integral         64    'h20                                                      
+  process_input                integral         1     'h1                                                       
+  enable                       integral         1     'h1                                                       
+  reset                        integral         1     'h0                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    25                                                        
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     hello_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.hello_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 45: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @764 
+  serial_in      integral         8     'h6c 
+  digest_length  integral         64    'h20 
+  process_input  integral         1     'h1  
+  enable         integral         1     'h1  
+  reset          integral         1     'h0  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 45: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 45: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 45: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x6c, process_input = 1, reset = 0
+UVM_INFO ../sv/harakas_driver.sv(44) @ 45: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @772                                                      
+  serial_in                    integral         8     'h6c                                                      
+  digest_length                integral         64    'h20                                                      
+  process_input                integral         1     'h1                                                       
+  enable                       integral         1     'h1                                                       
+  reset                        integral         1     'h0                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    35                                                        
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     hello_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.hello_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 55: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @780 
+  serial_in      integral         8     'h6c 
+  digest_length  integral         64    'h20 
+  process_input  integral         1     'h1  
+  enable         integral         1     'h1  
+  reset          integral         1     'h0  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 55: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 55: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 55: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x6c, process_input = 1, reset = 0
+UVM_INFO ../sv/harakas_driver.sv(44) @ 55: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @788                                                      
+  serial_in                    integral         8     'h6f                                                      
+  digest_length                integral         64    'h20                                                      
+  process_input                integral         1     'h1                                                       
+  enable                       integral         1     'h1                                                       
+  reset                        integral         1     'h0                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    45                                                        
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     hello_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.hello_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_seqs.sv(54) @ 55: uvm_test_top.env.agent.sequencer@@hello_message_seq.reset_s [reset_seq] Executing reset_seq
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 65: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @796 
+  serial_in      integral         8     'h6f 
+  digest_length  integral         64    'h20 
+  process_input  integral         1     'h1  
+  enable         integral         1     'h1  
+  reset          integral         1     'h0  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 65: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 65: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 65: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x6f, process_input = 1, reset = 0
+UVM_INFO ../sv/harakas_driver.sv(44) @ 65: uvm_test_top.env.agent.driver [harakas_driver] Driver: Sending data to DUT
+ ----------------------------------------------------------------------------------------------------------------
+Name                           Type             Size  Value                                                     
+----------------------------------------------------------------------------------------------------------------
+req                            harakas_message  -     @808                                                      
+  serial_in                    integral         8     'h0                                                       
+  digest_length                integral         64    'h0                                                       
+  process_input                integral         1     'h0                                                       
+  enable                       integral         1     'h0                                                       
+  reset                        integral         1     'h1                                                       
+  out                          integral         8     'hxx                                                      
+  begin_time                   time             64    55                                                        
+  depth                        int              32    'd3                                                       
+  parent sequence (name)       string           7     reset_s                                                   
+  parent sequence (full name)  string           58    uvm_test_top.env.agent.sequencer.hello_message_seq.reset_s
+  sequencer                    string           32    uvm_test_top.env.agent.sequencer                          
+----------------------------------------------------------------------------------------------------------------
+
+UVM_INFO ../sv/harakas_seqs.sv(35) @ 75: uvm_test_top.env.agent.sequencer@@hello_message_seq [hello_message_seq] drop objection
+UVM_INFO ../sv/harakas_monitor.sv(48) @ 75: uvm_test_top.env.agent.monitor [harakas_monitor] Monitor: Sending data to Scoreboard
+ ---------------------------------------------
+Name             Type             Size  Value
+---------------------------------------------
+item             harakas_message  -     @816 
+  serial_in      integral         8     'h0  
+  digest_length  integral         64    'h0  
+  process_input  integral         1     'h0  
+  enable         integral         1     'h0  
+  reset          integral         1     'h1  
+  out            integral         8     'hxx 
+---------------------------------------------
+
+UVM_INFO ../sv/harakas_scoreboard.sv(52) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Scoreboard: Accept transaction item!
+UVM_INFO ../sv/harakas_scoreboard.sv(58) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Printing all messages in mesgs_queue:
+UVM_INFO ../sv/harakas_scoreboard.sv(60) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Message[0]: serial_in = 0x0, process_input = 0, reset = 1
+UVM_INFO ../sv/harakas_scoreboard.sv(78) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Input length: 5, output length: 32
+UVM_INFO ../sv/harakas_scoreboard.sv(87) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Input data: 48 
+UVM_INFO ../sv/harakas_scoreboard.sv(87) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Input data: 65 
+UVM_INFO ../sv/harakas_scoreboard.sv(87) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Input data: 6c 
+UVM_INFO ../sv/harakas_scoreboard.sv(87) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Input data: 6c 
+UVM_INFO ../sv/harakas_scoreboard.sv(87) @ 75: uvm_test_top.env.scb [harakas_scoreboard] Input data: 6f 
+
+Input data (hex): 48656c6c6f
+
+DPI input_len: 5, output_len: 32
+
+Output of absrobing, input for squeezing:
+48656c6c6f1f00000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000
+
+input for the ASE rounds:
+q[0] = 0x0000000000110010
+q[1] = 0x0000000000100010
+q[2] = 0x0001000100110010
+q[3] = 0x0001000100100011
+q[4] = 0x0000000000100000
+q[5] = 0x0001000100010010
+q[6] = 0x0001000100010011
+q[7] = 0x2000000000000000
+
+
+ASE round 0:
+j = 0: output after sbox:
+fffefffeffefffeedffefffeffeeffef200000000001000020000000000100100001000100000001dffefffeffeefffeffffffffffffffef2000000000100010
+
+j = 1: output after sbox:
+ffecffedffeeeffefffeffeeeeedffed0003001211130003eefdefeeeeeeeeeeefffeefefeffefeffeeeffeffeefeeeeffedfffefeedeffcfeedfeedeeeefefe
+
+ASE round 1:
+j = 0: output after sbox:
+be9edeffd7deffdfffb6bff7b6969fffb6f79eb6d7d6f7b6d79ef796be9f96964909214921292849094061402949280069292109212129606841482909602940
+
+j = 1: output after sbox:
+ba02e569c660ba64befce340dcd689e2b040d05a0da166457a1f605fa986413bc6e7f667aae0963601f6ea1c3dbf0fd7f5d5c1568d99e5d64ac4f03bc6d2c420
+
+ASE round 2:
+j = 0: output after sbox:
+13b1e80762584baf9cfa1069516a2e098b0ab2b910686153d8dea46a00ca8d36396c510c0d3932a775e96432ca38a621b6064db5d2506f63ac60937a44f9f67c
+
+j = 1: output after sbox:
+9ed3ae07b52bd2310171adadd7ab945fd841b31308bc29266bf162eee3c16b80db3aa65cff78c192e37ffc9d47b6aea7d448d5719d260a833ba4aead9c0add69
+
+ASE round 3:
+j = 0: output after sbox:
+5611c6b11157796f2cd272cc1d621e91522e366da70d88944b953edc12813f335deb46f517481114fe92a166b2e90ac6602cc5212f138772bc524607d38456fb
+
+j = 1: output after sbox:
+3e7c0fcd6380e4f706dd70b7e1826d25a053ffce63039c535ffaf441c7618aa56eed89d40611b816ab4f0a1eec626173e9b9d5a2d21a68c431ad9735c4538337
+
+ASE round 4:
+j = 0: output after sbox:
+dad1d8646fbbad8f9b2e46fe9252b4506da58ea0df9240013a72e861347f305fce95881cdce2819b2e05ab6ea3cc835f7d0838453cdb6864136827da087d7893
+
+j = 1: output after sbox:
+3378cee4595278631ce342a284d25ff481ec603a1ef6570ab0febb9bab74d7eff3d736a08c0341967135c8ff811d15ee09481788d032680e43b33a89cc2a505c
+UVM_INFO ../sv/harakas_scoreboard.sv(95) @ 75: uvm_test_top.env.scb [harakas_scoreboard] 
+
+Output: cc4ec307f2e6b773463c501a520783c71fa79c30d034bb4a7c1c87b857b157e2
+UVM_INFO /usr/synopsys/vcs/T-2022.06-SP2/etc/uvm/base/uvm_objection.svh(1274) @ 75: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   51
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[RNTST]     1
+[TEST_DONE]     1
+[UVMTOP]     1
+[harakas_driver]     7
+[harakas_monitor]     7
+[harakas_scoreboard]    28
+[hello_message_seq]     3
+[reset_seq]     2
+[send_hello_seq]     1
+$finish called from file "/usr/synopsys/vcs/T-2022.06-SP2/etc/uvm/base/uvm_root.svh", line 437.
+$finish at simulation time                   75
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 75 ns
+CPU Time:      0.480 seconds;       Data structure size:   0.5Mb
+Sat May 24 17:26:29 2025

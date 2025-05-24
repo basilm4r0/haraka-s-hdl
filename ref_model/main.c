@@ -71,9 +71,9 @@ int main() {
 
 
     // Print the output
-    printf("Output: ");
+    printf("\nOutput: ");
     for (unsigned long long i = 0; i < output_len; i++) {
-        printf("%02X", output[i]);
+        printf("%02x", output[i]);
     }
     printf("\n");
 

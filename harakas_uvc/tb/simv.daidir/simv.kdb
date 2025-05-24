@@ -1,0 +1,22 @@
+rc file Version 1.0
+
+[Design]
+COMPILE_PATH=/home/aseel/haraka-s-hdl/harakas_uvc/tb
+VCS_HOME=/usr/synopsys/vcs/T-2022.06-SP2
+VERDI_HOME=/usr/synopsys/verdi/T-2022.06-SP2
+SystemC=FALSE
+UUM=FALSE
+KDB=TRUE
+USE_NOVAS_HOME=FALSE
+COSIM=FALSE
+TOP=uvm_custom_install_recording uvm_custom_install_verdi_recording tb_top hw_top 
+OPTION=-ssv -ssy 
+ELAB_OPTION=-ssv -ssy 
+ELAB=TRUE
+SIMV_WRAPPER=FALSE
+[vcs]
+RUN_ELABCOM=unset TURBO_LOG_DIR ;\rm -rf /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/elabcomLog ;/usr/synopsys/vcs/T-2022.06-SP2/linux64/bin/elabcom -logdir /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/elabcomLog  -simvdaidir /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir  -lib /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/work  -saveLevel  -elab /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/kdb -simflow -simdir /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/kdb_libs -topfile /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/.elabcomTopFile -pkgfile /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/.elabcomPkgFile -ssv -ssy  -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389  >& /dev/null  && echo Success >& /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/.elabcomReport || echo Fail >& /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/.elabcomReport; \rm -rf /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/work.lib++ /home/aseel/haraka-s-hdl/harakas_uvc/tb/simv.daidir/kdb_libs/ 
+
+[Value]
+WREALX=ffff534e50535f58
+WREALZ=ffff534e50535f5a

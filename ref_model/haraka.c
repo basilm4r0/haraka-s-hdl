@@ -749,6 +749,7 @@ static void haraka_S_squeezeblocks(unsigned char *h, unsigned long long nblocks,
                                    const spx_ctx *ctx)
 {
     while (nblocks > 0) {
+
         haraka512_perm(s, s, ctx);
         memcpy(h, s, HARAKAS_RATE);
         h += r;
@@ -769,6 +770,12 @@ void haraka_S(unsigned char *out, unsigned long long outlen,
     }
     haraka_S_absorb(s, 32, in, inlen, 0x1F, ctx);
 
+    printf("\nOutput of absrobing, input for squeezing:\n");
+    for (i = 0; i < 64; i++) {
+       printf("%02x", s[i]);
+    }
+    printf("\n");
+
     haraka_S_squeezeblocks(out, outlen / 32, s, 32, ctx);
     out += (outlen / 32) * 32;
 
@@ -787,21 +794,33 @@ void haraka512_perm(unsigned char *out, const unsigned char *in,
     uint64_t q[8], tmp_q;
     unsigned int i, j;
 
-    br_range_dec32le(w, 16, in);
+    br_range_dec32le(w, 16, in); //  reads multiple 32-bit little-endian integers from a byte array and stores them into a unsigned 32-bit integer type. //! why 16? cuz 512/ 32 = 16 ( i have 16 multiples of 32)
     for (i = 0; i < 4; i++) {
-        br_aes_ct64_interleave_in(&q[i], &q[i + 4], w + (i << 2));
+        br_aes_ct64_interleave_in(&q[i], &q[i + 4], w + (i << 2)); // This function interleaves bytes from four 32-bit words into two 64-bit words
     }
-    br_aes_ct64_ortho(q);
+    br_aes_ct64_ortho(q); // i dont understand 
+
+    printf("\ninput for the ASE rounds:\n");
+    for (int i = 0; i < 8; ++i) {
+        printf("q[%d] = 0x%016llx\n", i, q[i]);
+    }
+    printf("\n");
 
     /* AES rounds */
     for (i = 0; i < 5; i++) {
-        for (j = 0; j < 2; j++) {
+        printf("\nASE round %d:", i);
+        for (j = 0; j < 2; j++) { // each round needs 2 ASE round
             br_aes_ct64_bitslice_Sbox(q);
+            printf("\nj = %d: output after sbox:\n",j);
+            for (int i = 0; i < 8; ++i) {
+                printf("%016llx", q[i]);
+            }
+            printf("\n");
             shift_rows(q);
             mix_columns(q);
             add_round_key(q, ctx->tweaked512_rc64[2*i + j]);
         }
-        /* Mix states */
+        /* Mix states */ // ea ch round needs mixing function
         for (j = 0; j < 8; j++) {
             tmp_q = q[j];
             q[j] = (tmp_q & 0x0001000100010001) << 5 |
