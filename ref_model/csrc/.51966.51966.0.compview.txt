@@ -1,6 +1,0 @@
-{"vcs1":{"timestamp_begin":1748017208.398737983, "rt":0.18, "ut":0.10, "st":0.06}}
-{"link":{"timestamp_begin":1748017208.698095546, "rt":0.34, "ut":0.25, "st":0.10}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1748017208.028329918}
-{"VCS_COMP_START_TIME": 1748017208.028329918}
-{"VCS_COMP_END_TIME": 1748017209.116366307}
-{"VCS_USER_OPTIONS": "-sverilog dpi_wrapper.c haraka_test.sv"}

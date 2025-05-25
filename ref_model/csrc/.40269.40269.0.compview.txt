@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1748016360.896000561, "rt":0.33, "ut":0.20, "st":0.12}}
-{"vcselab":{"timestamp_begin":1748016361.312198322, "rt":0.25, "ut":0.20, "st":0.05}}
-{"link":{"timestamp_begin":1748016361.630212462, "rt":0.30, "ut":0.21, "st":0.12}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1748016360.559946340}
-{"VCS_COMP_START_TIME": 1748016360.559946340}
-{"VCS_COMP_END_TIME": 1748016362.010372601}
-{"VCS_USER_OPTIONS": "-sverilog dpi_wrapper.c haraka_test.sv"}
-{"vcs1": {"peak_mem": 329280}}
-{"stitch_vcselab": {"peak_mem": 210136}}

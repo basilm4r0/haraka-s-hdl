@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1748096773.526923292, "rt":13.09, "ut":13.38, "st":0.60}}
-{"vcselab":{"timestamp_begin":1748096786.700612242, "rt":0.38, "ut":0.30, "st":0.09}}
-{"link":{"timestamp_begin":1748096787.148069008, "rt":1.38, "ut":1.11, "st":0.32}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1748096772.951738029}
-{"VCS_COMP_START_TIME": 1748096772.951738029}
-{"VCS_COMP_END_TIME": 1748096788.660936869}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -lca -kdb -debug_access+all+reverse -ntb_opts uvm +UVM_TESTNAME=hello_message_test -timescale=1ns/1ns +incdir+../sv ../../ref_model/dpi_wrapper.c ../sv/harakas_pkg.sv ../sv/harakas_if.sv tb_top.sv hw_top.sv -o simv"}
-{"vcs1": {"peak_mem": 491064}}
-{"stitch_vcselab": {"peak_mem": 226580}}
