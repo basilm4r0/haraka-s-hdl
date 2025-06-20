@@ -12,7 +12,21 @@ SRC = \
     ../sv/harakas_pkg.sv \
     ../sv/harakas_if.sv \
     tb_top.sv \
-    hw_top.sv 
+    hw_top.sv \
+    ../../src/deserializer.sv \
+    ../../src/serializer.sv \
+    ../../src/Mux512.sv \
+    ../../src/QuadAes.sv \
+    ../../src/Aes.sv \
+    ../../src/S_box.sv \
+    ../../src/Register.sv \
+    ../../src/ShiftRows.sv \
+    ../../src/MixColumns.sv \
+    ../../src/AddRC.sv \
+    ../../src/Mix512.sv \
+    ../../src/Demux512.sv \
+    ../../src/Haraka.sv \
+    ../../src/Haraka_S.sv \
 
 # Default target: compile and run
 all: simv

@@ -46,12 +46,11 @@ module top;
         @(posedge clk); serial_in = 8'h6c;
         @(posedge clk); serial_in = 8'h6f;
         // Finish input
-        @(posedge clk);
-            process_input = 0;
-            serial_in = 8'd0;
+        @(posedge clk);process_input = 0;
+            // serial_in = 8'd0;
 
         // Wait for output (if needed)
-        #400;
+        #1500;
 
         $finish;
     end

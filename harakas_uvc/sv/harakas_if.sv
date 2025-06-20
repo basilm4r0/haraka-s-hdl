@@ -15,10 +15,6 @@ interface harakas_if(input logic clk);
     // outputs
     logic [8-1:0] out;
 
-    
-    // create function named send_to_dut
-
-    // create funtion for collecting messages from the ref 
 
 
     
