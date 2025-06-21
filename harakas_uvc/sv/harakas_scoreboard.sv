@@ -73,7 +73,7 @@ class harakas_scoreboard extends uvm_scoreboard;
                 input_len++;
                 output_len = msg.digest_length;
             end
-            // when the second reset-> means input data is ready send the data to the dpi 
+            // when reset is set to 1 for the second time, it indicates the input sequence is done and data should be sent to the DPI
             if (msg.reset && !msg.process_input && input_len > 0 ) begin
                 `uvm_info(get_type_name(), $sformatf("Input length: %0d, output length: %0d", input_len, output_len), UVM_MEDIUM)
                 
