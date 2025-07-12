@@ -30,7 +30,7 @@ class harakas_base_seqs extends uvm_sequence#(harakas_message);
             phase = starting_phase;
         `endif
         if (phase != null) begin
-            #10; // or wait for `done` signal from DUT
+            #10ns;; // or wait for `done` signal from DUT ( i will make it 1500) or i will use a done signal 
             phase.drop_objection(this, get_type_name());
             `uvm_info(get_type_name(), "drop objection", UVM_MEDIUM)
         end
@@ -70,11 +70,15 @@ class send_hello_seq extends harakas_base_seqs;
     virtual task body();
         `uvm_info(get_type_name(), "Sending 'Hello' characters", UVM_LOW)
         // Enable and start input
-        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h48; req.process_input == 1; req.digest_length == 64'd32; req.reset == 0;}) // H
-        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h65; req.process_input == 1; req.digest_length == 64'd32; req.reset == 0;}) // e
-        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h6c; req.process_input == 1; req.digest_length == 64'd32; req.reset == 0;}) // l
-        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h6c; req.process_input == 1; req.digest_length == 64'd32; req.reset == 0;}) // l
-        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h6f; req.process_input == 1; req.digest_length == 64'd32; req.reset == 0;}) // o
+        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h48; req.process_input == 1; req.digest_length == 64'd64; req.reset == 0;}) // H
+        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h65; req.process_input == 1; req.digest_length == 64'd64; req.reset == 0;}) // e
+        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h6c; req.process_input == 1; req.digest_length == 64'd64; req.reset == 0;}) // l
+        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h6c; req.process_input == 1; req.digest_length == 64'd64; req.reset == 0;}) // l
+        `uvm_do_with(req, {req.enable == 1; req.serial_in == 8'h6f; req.process_input == 1; req.digest_length == 64'd64; req.reset == 0;}) // o
+        `uvm_do_with(req, {req.serial_in == 8'h6f; req.enable == 1; req.process_input == 0; req.digest_length == 64'd64; req.reset == 0;})
+        #700ns;
+        // place the wait statement here, then send a reset signal
+        `uvm_do_with(req, {req.reset == 1; req.enable == 0; req.process_input == 0; req.digest_length == 0; req.serial_in == 8'd0;})
     endtask
 endclass :send_hello_seq
 
@@ -102,8 +106,8 @@ class hello_message_seq extends harakas_base_seqs;
         `uvm_info(get_type_name(), "Executing hello_message_seq sequence", UVM_LOW)
         `uvm_do(reset_s)
         `uvm_do(hello_s)
+        // Wait for DUT to process
         // Finish sequence
-        `uvm_do(reset_s)
     endtask
 
 endclass : hello_message_seq
