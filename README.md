@@ -30,6 +30,4 @@ This repository houses an **implementation of the HarakaS hash function** in **S
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-You are free to use, modify, and distribute this project under the terms of the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the [GPLv3](LICENSE).
