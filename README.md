@@ -31,3 +31,5 @@ This repository houses an **implementation of the HarakaS hash function** in **S
 ## License
 
 This project is licensed under the [GPLv3](LICENSE) license.
+
+![GPLv3](https://www.gnu.org/graphics/gplv3-or-later.png)
