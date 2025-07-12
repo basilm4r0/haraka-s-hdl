@@ -30,4 +30,4 @@ This repository houses an **implementation of the HarakaS hash function** in **S
 
 ## License
 
-This project is licensed under the [GPLv3](LICENSE).
+This project is licensed under the [GPLv3](LICENSE) license.
