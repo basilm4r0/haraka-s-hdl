@@ -10,7 +10,7 @@ module serializer
     output logic [OUTWIDTH-1:0] serial_out;
     logic clk_edge;
 
-    edge_detector detector (.in(clk), .clk(bclk), .out(clk_edge));
+    EdgeDetector edgeDetector (.in(clk), .clk(bclk), .out(clk_edge));
 
     always_ff @(posedge bclk, posedge reset) begin
         if (reset) begin
@@ -35,15 +35,3 @@ module serializer
     end
 endmodule
 
-module edge_detector ( input in,
-                       input clk,
-                       output logic out);
-    logic in_delayed;
-    always_ff @(posedge clk) begin
-        in_delayed <= in;
-    end
-    always_ff @(posedge clk) begin
-        out = in & ~in_delayed;
-    end
-        
-endmodule

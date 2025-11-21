@@ -10,12 +10,12 @@ module top;
 
 
     Haraka_S harka_s (
-        .serial_in(serial_in), 
-        .process_input(process_input), 
+        .serial_in(serial_in),
+        .process_input(process_input),
         .digest_length(digest_length),
         .enable(enable),
         .clk(clk),
-        .reset(reset), 
+        .reset(reset),
         .out(out)
     );
 
@@ -26,8 +26,8 @@ module top;
     // Stimulus + FSDB dumping
     initial begin
         // FSDB dumping
-        $fsdbDumpfile("simv.fsdb");
-        $fsdbDumpvars(0, top);  
+        $dumpfile("simv.fsdb");
+        $dumpvars(0, top);
 
         // Initialize signals
         reset = 1;
@@ -38,7 +38,7 @@ module top;
 
         // Reset pulse
         #20 reset = 0;
-         
+
         // Start feeding data
         @(posedge clk); enable = 1; serial_in = 8'h48; process_input = 1;
         @(posedge clk); serial_in = 8'h65;

@@ -1,6 +1,6 @@
 module Haraka_S (serial_in, process_input, digest_length, enable, clk, reset, out);
 	input [8-1:0] serial_in;
-    input process_input;
+	input process_input;
 	input [64-1:0] digest_length;
 	input enable;
 	input clk;
@@ -26,7 +26,7 @@ module Haraka_S (serial_in, process_input, digest_length, enable, clk, reset, ou
 	logic [127:0] round_constants [39:0];
 	wire deserialized_output_ready;
 
-	deserializer deserializer (.serial_in(serial_in), .process_input(process_input), .clk(gated_clk), .out(padded), .outclk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
+	deserializer deserializer (.serial_in(serial_in), .process_input(process_input), .clk(gated_clk), .out(padded), .internal_clk(internal_clk), .clear(reset), .output_ready(deserialized_output_ready), .start_squeeze(start_squeeze));
 	Haraka Haraka (.in(haraka_in), .rc(rc), .clk(internal_clk), .out(haraka_out), .reset(reset), .output_ready(output_ready));
 	serializer serializer (.in(serializer_input), .length(serializer_length), .bclk(gated_clk), .clk(internal_clk), .reset(reset), .serial_out(out));
 
@@ -48,7 +48,8 @@ module Haraka_S (serial_in, process_input, digest_length, enable, clk, reset, ou
 					serializer_input <= rate;
 					serializer_length <= 32;
 				end
-				else if (counter < (digest_length>>5 + (digest_length[4:0] != 0))) begin // counter < # of blocks needed to contain digest length
+				// if counter < # of blocks needed to contain digest length
+				else if (counter < (digest_length>>5 + (digest_length[4:0] != 0))) begin
 					serializer_input <= rate;
 					serializer_length <= digest_length[5:0];
 				end
@@ -62,13 +63,13 @@ module Haraka_S (serial_in, process_input, digest_length, enable, clk, reset, ou
 
 	always_comb begin
 			rc = {round_constants[round*8+7],
-				  round_constants[round*8+6],
-				  round_constants[round*8+5],
-				  round_constants[round*8+4],
-				  round_constants[round*8+3],
-				  round_constants[round*8+2],
-				  round_constants[round*8+1],
-				  round_constants[round*8]};
+			      round_constants[round*8+6],
+			      round_constants[round*8+5],
+			      round_constants[round*8+4],
+			      round_constants[round*8+3],
+			      round_constants[round*8+2],
+			      round_constants[round*8+1],
+			      round_constants[round*8]};
 	end
 
 	
